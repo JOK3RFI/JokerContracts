@@ -1,0 +1,1622 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pool_manager_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_custodian_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_timelock_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "black_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address[]",
+						"name": "_collateral_addresses",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_pool_ceilings",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_initial_fees",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "amo_minter_addr",
+						"type": "address"
+					}
+				],
+				"name": "AMOMinterAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "amo_minter_addr",
+						"type": "address"
+					}
+				],
+				"name": "AMOMinterRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bbkMaxColE18OutPerHour",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rctMaxFxsOutPerHour",
+						"type": "uint256"
+					}
+				],
+				"name": "BbkRctPerHourSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_price",
+						"type": "uint256"
+					}
+				],
+				"name": "CollateralPriceSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "new_state",
+						"type": "bool"
+					}
+				],
+				"name": "CollateralToggled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "new_custodian",
+						"type": "address"
+					}
+				],
+				"name": "CustodianSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_mint_fee",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_redeem_fee",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_buyback_fee",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_recollat_fee",
+						"type": "uint256"
+					}
+				],
+				"name": "FeesSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "tog_idx",
+						"type": "uint8"
+					}
+				],
+				"name": "MRBRToggled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "frax_usd_chainlink_addr",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "fxs_usd_chainlink_addr",
+						"type": "address"
+					}
+				],
+				"name": "OraclesSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerNominated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_ceiling",
+						"type": "uint256"
+					}
+				],
+				"name": "PoolCeilingSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_bonus_rate",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_redemption_delay",
+						"type": "uint256"
+					}
+				],
+				"name": "PoolParametersSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_bonus_rate",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "new_redemption_delay",
+						"type": "uint256"
+					}
+				],
+				"name": "PriceThresholdsSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "new_timelock",
+						"type": "address"
+					}
+				],
+				"name": "TimelockSet",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "acceptOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "amo_minter_addr",
+						"type": "address"
+					}
+				],
+				"name": "addAMOMinter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "allCollaterals",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "collateral_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "amoMinterBorrow",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "amo_minter_addresses",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "bbkHourlyCum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "bbkMaxColE18OutPerHour",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "blackAddress",
+				"outputs": [
+					{
+						"internalType": "contract ERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "bonus_rate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "col_out_min",
+						"type": "uint256"
+					}
+				],
+				"name": "buyBackFxs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_out",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "buybackAvailableCollat",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "collatDollarBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance_tally",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "collateralAddrToIdx",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "collateral_addresses",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "collat_address",
+						"type": "address"
+					}
+				],
+				"name": "collateral_information",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "index",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "symbol",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "col_addr",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "is_enabled",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "missing_decs",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "pool_ceiling",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "mint_paused",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "redeem_paused",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "recollat_paused",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "buyback_paused",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "borrowing_paused",
+								"type": "bool"
+							},
+							{
+								"internalType": "uint256",
+								"name": "minting_fee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "redemption_fee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "buyback_fee",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "recollat_fee",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct FraxPoolV3.CollateralInformation",
+						"name": "return_data",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "collateral_prices",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "collateral_symbols",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					}
+				],
+				"name": "collectRedemption",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "fxs_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collateral_amount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "curEpochHr",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "custodian_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "enabled_collaterals",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					}
+				],
+				"name": "freeCollatBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBLACKPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "frax_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "getFRAXInCollateral",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getFRAXPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getFXSPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "lastRedeemed",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "frax_amt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "frax_out_min",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "max_collat_in",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "max_fxs_in",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "one_to_one_override",
+						"type": "bool"
+					}
+				],
+				"name": "mintFrax",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "total_frax_mint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collat_needed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_needed",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "black_needed",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mint_price_threshold",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "missing_decimals",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "nominateNewOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nominatedOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "pool_ceilings",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "priceFeedBLACKUSD",
+				"outputs": [
+					{
+						"internalType": "contract AggregatorV3Interface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "priceFeedFRAXUSD",
+				"outputs": [
+					{
+						"internalType": "contract AggregatorV3Interface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "priceFeedFXSUSD",
+				"outputs": [
+					{
+						"internalType": "contract AggregatorV3Interface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "rctHourlyCum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "rctMaxFxsOutPerHour",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recollatAvailableFxs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recollatTheoColAvailableE18",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collateral_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_out_min",
+						"type": "uint256"
+					}
+				],
+				"name": "recollateralize",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "fxs_out",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "redeemCollateralBalances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "redeemFXSBalances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "frax_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_out_min",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "col_out_min",
+						"type": "uint256"
+					}
+				],
+				"name": "redeemFrax",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "collat_out",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_out",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "black_out",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "redeem_price_threshold",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "redemption_delay",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "amo_minter_addr",
+						"type": "address"
+					}
+				],
+				"name": "removeAMOMinter",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_bbkMaxColE18OutPerHour",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rctMaxFxsOutPerHour",
+						"type": "uint256"
+					}
+				],
+				"name": "setBbkRctPerHour",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_new_price",
+						"type": "uint256"
+					}
+				],
+				"name": "setCollateralPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "new_custodian",
+						"type": "address"
+					}
+				],
+				"name": "setCustodian",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_mint_fee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_redeem_fee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_buyback_fee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_recollat_fee",
+						"type": "uint256"
+					}
+				],
+				"name": "setFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_frax_usd_chainlink_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_fxs_usd_chainlink_addr",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_black_usd_chainlink_addr",
+						"type": "address"
+					}
+				],
+				"name": "setOracles",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_ceiling",
+						"type": "uint256"
+					}
+				],
+				"name": "setPoolCeiling",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "new_bonus_rate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_redemption_delay",
+						"type": "uint256"
+					}
+				],
+				"name": "setPoolParameters",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "new_mint_price_threshold",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "new_redeem_price_threshold",
+						"type": "uint256"
+					}
+				],
+				"name": "setPriceThresholds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "new_timelock",
+						"type": "address"
+					}
+				],
+				"name": "setTimelock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelock_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					}
+				],
+				"name": "toggleCollateral",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_idx",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "tog_idx",
+						"type": "uint8"
+					}
+				],
+				"name": "toggleMRBR",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "unclaimedPoolCollateral",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unclaimedPoolFXS",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Frax/Pools/FraxPoolV3.sol": "FraxPoolV3"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Common/Context.sol": {
+			"keccak256": "0x60d51a32063a4975dbf9433d38f5849173527da72f007c38053274e06698cb54",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9ee6938d731aac55f6176c30ba4fc8456a63de57a7a2d659f43a053dfb381d3",
+				"dweb:/ipfs/QmRyq4LneV4qz8uLdEhTU4YndjT365PJBPvK4btHKtmSSG"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/ERC20.sol": {
+			"keccak256": "0x433b9ee195d0bd257219bc337ff8aac624282a826726b18fdb299de0e3d4149e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf5f5456bd1c28eb94e86ba33d9ec9f7110613f405ad58b935c6397b81185d78",
+				"dweb:/ipfs/QmQXQCV5aGubTfmGMK4ecR3zBkj2NkBe1XJBbg5GSuUnwg"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/IERC20.sol": {
+			"keccak256": "0x057bec1fafd7ca222117f41fcfb9c8dc1f61aa30e5a0222c981196e9113de7e6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c74a52d9102d6eaf4c2a6d630892f92260391ee5e95c9f55578a3a21b02f8b09",
+				"dweb:/ipfs/QmWjPAqmGF88HpkR4BCf3pgimrZvLf4ERVG2Tz5EDjKP62"
+			]
+		},
+		"NewFraxProtocol/contracts/FXS/IFxs.sol": {
+			"keccak256": "0x79319bc830e55de921ee2932c6951c7874eac51fd2d44ce9855a07cc7dbb5d0c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://5ecce6eed1e2a7630876be7e9e6f6a8180a398816c44c831208a2e8f42db680f",
+				"dweb:/ipfs/QmYLPkcB8Pc4Kt7eFVnk8aaTNiBqGYS3tE2ZKooiDZfZmQ"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/IFrax.sol": {
+			"keccak256": "0x807ae59d0ab475798793f0f0cdf858cc94ed3bb3468a00fcb61eaec53c54cb61",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c92f05d253462d5a6c876ee50c9ac9e3851d67bedd8cba37470a9e04373b20d7",
+				"dweb:/ipfs/QmUpyfDtrmyGMnDvtqGPrd65b6MbtSWZgUTHyTyT44ibZA"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/IFraxAMOMinter.sol": {
+			"keccak256": "0x60826b3e501caa646b6ec79611011a0f6d3d475f80e7a6237fc2f82135f54565",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ac07cbe942454f4c5dbaa478a373c703f863945a199669c8ec8af7ed1558632d",
+				"dweb:/ipfs/Qmef9H7rFijVSLJpUjMrhA3cGR9xW7LGmMd16uScVVrpP6"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/Pools/FraxPoolV3.sol": {
+			"keccak256": "0x65d03704f5b08864403b7cb962b4c0e1329f20ea68753e0fa66d758f539ec463",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://32169335313a87d0d5888eef8dac31f44ede8bc54dad56bff9f219977541b0c3",
+				"dweb:/ipfs/QmWjo1Y8w4uCEgJPGHFjqPFAovWM3HdpD6vEZHfMPffJsW"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/SafeMath.sol": {
+			"keccak256": "0x43a20f7cf4c4319f81450d53779455e88a7ab80bdfc43925156ed4083b74a180",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85317e177f613c29156ffe0b1c1c29c31fedfea1ffc373c9d7f393ef51372728",
+				"dweb:/ipfs/QmckZqe6wjgKWd4BTPUjRY1ofC9CsZKxAgXPFCKBisuJdr"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/AggregatorV3Interface.sol": {
+			"keccak256": "0x5e7761d06fea8192b159f3e287600cba23c5bdbe3a1bbe1050cc3ab9ed4273a4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b6956df5c8ad84b2aba10e7d07c9f4976ae9ebdd65509729e752900a6f6475d",
+				"dweb:/ipfs/QmP2MJZdZsJWRozMHmCtq4SU5ePKEHxCzhyqtBFpAjCDny"
+			]
+		},
+		"NewFraxProtocol/contracts/Staking/Owned.sol": {
+			"keccak256": "0x89e1dde7e13d0109febf812e7d97dda7f24feb7cfe90239c0f7585d1143407d1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://917add49808f1df4025a7a33e8444661261ebf3ea9f02bcd44c698b1c1e4e7e6",
+				"dweb:/ipfs/QmVSVA3swHsqEy5F2n8YBGB91cL66xVkJCezkjY9VAjnwE"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/TransferHelper.sol": {
+			"keccak256": "0x2eb33792741584e83e0794a7493335b5dce9a9b675dda9e647ce29d88a40a196",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0359fd7076306116b7af564be4f7d555b70daa273652ee8a1a89a64cd4e1ad18",
+				"dweb:/ipfs/QmVbUyw2GeQZEZoUN48aPd5KwKHbxAYCvWqkkkbC9APNH2"
+			]
+		},
+		"NewFraxProtocol/contracts/Utils/Address.sol": {
+			"keccak256": "0x60b5be0e623c9caa7d5ae4c9cf623c4f984ddb87837d2967fd070ef119f8a4ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://00aecccf754f6c47afc02fc0b9fa80f5c0d76b868dad1dfe027efe336aa9d7f7",
+				"dweb:/ipfs/QmZSAq9jF52a6LgJjxokShg81Lnd32mK4JPNmeTvFD49tN"
+			]
+		}
+	},
+	"version": 1
+}

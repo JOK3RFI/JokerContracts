@@ -1,0 +1,89 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getDecimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestPrice",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"getLatestPrice()": {
+					"notice": "Returns the latest price"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Oracle/ChainlinkETHUSDPriceConsumer.sol": "ChainlinkETHUSDPriceConsumer"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Oracle/AggregatorV3Interface.sol": {
+			"keccak256": "0x5e7761d06fea8192b159f3e287600cba23c5bdbe3a1bbe1050cc3ab9ed4273a4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b6956df5c8ad84b2aba10e7d07c9f4976ae9ebdd65509729e752900a6f6475d",
+				"dweb:/ipfs/QmP2MJZdZsJWRozMHmCtq4SU5ePKEHxCzhyqtBFpAjCDny"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/ChainlinkETHUSDPriceConsumer.sol": {
+			"keccak256": "0xbf1e543a75d71400e208b338135234be319e9bfcf8978e1424494f34287c4ecf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://205c869d37aa9e8bda354484a42688aab8fd8c44ae4b9c9379773be177d3a1fe",
+				"dweb:/ipfs/QmbDfFK7K17Yq6niktSf8xnXKvRw4EK5uWemqSS2cHjtc1"
+			]
+		}
+	},
+	"version": 1
+}

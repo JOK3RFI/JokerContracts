@@ -1,0 +1,1303 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_oracle_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_creator_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_timelock_address",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Approval",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "FRAXAddressSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FXSBurned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FXSMinted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerNominated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "previousAdminRole",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "newAdminRole",
+						"type": "bytes32"
+					}
+				],
+				"name": "RoleAdminChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleGranted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
+				"name": "RoleRevoked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "voter",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "previousBalance",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newBalance",
+						"type": "uint256"
+					}
+				],
+				"name": "VoterVotesChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DEFAULT_ADMIN_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "FRAXStablecoinAdd",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "acceptOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					}
+				],
+				"name": "allowance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "burnFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"name": "checkpoints",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "fromBlock",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint96",
+						"name": "votes",
+						"type": "uint96"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "subtractedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "decreaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "genesis_supply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "getCurrentVotes",
+				"outputs": [
+					{
+						"internalType": "uint96",
+						"name": "",
+						"type": "uint96"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "blockNumber",
+						"type": "uint256"
+					}
+				],
+				"name": "getPriorVotes",
+				"outputs": [
+					{
+						"internalType": "uint96",
+						"name": "",
+						"type": "uint96"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					}
+				],
+				"name": "getRoleAdmin",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getRoleMember",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					}
+				],
+				"name": "getRoleMemberCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "grantRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "hasRole",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "addedValue",
+						"type": "uint256"
+					}
+				],
+				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "name",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "nominateNewOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nominatedOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "numCheckpoints",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "oracle_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "b_address",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "b_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "pool_burn_from",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "m_address",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "m_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "pool_mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "renounceRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "revokeRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "frax_contract_address",
+						"type": "address"
+					}
+				],
+				"name": "setFRAXAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "new_oracle",
+						"type": "address"
+					}
+				],
+				"name": "setOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "new_timelock",
+						"type": "address"
+					}
+				],
+				"name": "setTimelock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelock_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "toggleVotes",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "trackingVotes",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferFrom",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"Approval(address,address,uint256)": {
+					"details": "Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance."
+				},
+				"RoleAdminChanged(bytes32,bytes32,bytes32)": {
+					"details": "Emitted when `newAdminRole` is set as ``role``'s admin role, replacing `previousAdminRole` `DEFAULT_ADMIN_ROLE` is the starting admin for all roles, despite {RoleAdminChanged} not being emitted signaling this. _Available since v3.1._"
+				},
+				"RoleGranted(bytes32,address,address)": {
+					"details": "Emitted when `account` is granted `role`. `sender` is the account that originated the contract call, an admin role bearer except when using {_setupRole}."
+				},
+				"RoleRevoked(bytes32,address,address)": {
+					"details": "Emitted when `account` is revoked `role`. `sender` is the account that originated the contract call:   - if using `revokeRole`, it is the admin role bearer   - if using `renounceRole`, it is the role bearer (i.e. `account`)"
+				},
+				"Transfer(address,address,uint256)": {
+					"details": "Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"allowance(address,address)": {
+					"details": "See {IERC20-allowance}."
+				},
+				"approve(address,uint256)": {
+					"details": "See {IERC20-approve}. Requirements: - `spender` cannot be the zero address.approve(address spender, uint256 amount)"
+				},
+				"balanceOf(address)": {
+					"details": "See {IERC20-balanceOf}."
+				},
+				"burn(uint256)": {
+					"details": "Destroys `amount` tokens from the caller. See {ERC20-_burn}."
+				},
+				"burnFrom(address,uint256)": {
+					"details": "Destroys `amount` tokens from `account`, deducting from the caller's allowance. See {ERC20-_burn} and {ERC20-allowance}. Requirements: - the caller must have allowance for `accounts`'s tokens of at least `amount`."
+				},
+				"decreaseAllowance(address,uint256)": {
+					"details": "Atomically decreases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`."
+				},
+				"getCurrentVotes(address)": {
+					"params": {
+						"account": "The address to get votes balance"
+					},
+					"returns": {
+						"_0": "The number of current votes for `account`"
+					}
+				},
+				"getPriorVotes(address,uint256)": {
+					"details": "Block number must be a finalized block or else this function will revert to prevent misinformation.",
+					"params": {
+						"account": "The address of the account to check",
+						"blockNumber": "The block number to get the vote balance at"
+					},
+					"returns": {
+						"_0": "The number of votes the account had as of the given block"
+					}
+				},
+				"getRoleAdmin(bytes32)": {
+					"details": "Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}."
+				},
+				"getRoleMember(bytes32,uint256)": {
+					"details": "Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information."
+				},
+				"getRoleMemberCount(bytes32)": {
+					"details": "Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role."
+				},
+				"grantRole(bytes32,address)": {
+					"details": "Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role."
+				},
+				"hasRole(bytes32,address)": {
+					"details": "Returns `true` if `account` has been granted `role`."
+				},
+				"increaseAllowance(address,uint256)": {
+					"details": "Atomically increases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address."
+				},
+				"renounceRole(bytes32,address)": {
+					"details": "Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`."
+				},
+				"revokeRole(bytes32,address)": {
+					"details": "Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role."
+				},
+				"totalSupply()": {
+					"details": "See {IERC20-totalSupply}."
+				},
+				"transfer(address,uint256)": {
+					"details": "See {IERC20-transfer}. Requirements: - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`."
+				},
+				"transferFrom(address,address,uint256)": {
+					"details": "See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}; Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for `sender`'s tokens of at least `amount`."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"VoterVotesChanged(address,uint256,uint256)": {
+					"notice": "An event thats emitted when a voters account's vote balance changes"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"getCurrentVotes(address)": {
+					"notice": "Gets the current votes balance for `account`"
+				},
+				"getPriorVotes(address,uint256)": {
+					"notice": "Determine the prior number of votes for an account as of a block number"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/FXS/FXS.sol": "FRAXShares"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Common/Context.sol": {
+			"keccak256": "0x60d51a32063a4975dbf9433d38f5849173527da72f007c38053274e06698cb54",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9ee6938d731aac55f6176c30ba4fc8456a63de57a7a2d659f43a053dfb381d3",
+				"dweb:/ipfs/QmRyq4LneV4qz8uLdEhTU4YndjT365PJBPvK4btHKtmSSG"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/ERC20.sol": {
+			"keccak256": "0x433b9ee195d0bd257219bc337ff8aac624282a826726b18fdb299de0e3d4149e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf5f5456bd1c28eb94e86ba33d9ec9f7110613f405ad58b935c6397b81185d78",
+				"dweb:/ipfs/QmQXQCV5aGubTfmGMK4ecR3zBkj2NkBe1XJBbg5GSuUnwg"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/ERC20Custom.sol": {
+			"keccak256": "0xff03c1b74f9769a972c7a45f1876f8d14f02692d6994e23a2e61cb7b47f2dcc7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://692b1c8a92cae3984781a36cbeac86dfa75133760cc87ed90a6a32d7d7a8c7eb",
+				"dweb:/ipfs/QmNZPS2M5kJNG1biNbWufyfJWimvpE7Waw2YhgaCiXLrv5"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/IERC20.sol": {
+			"keccak256": "0x057bec1fafd7ca222117f41fcfb9c8dc1f61aa30e5a0222c981196e9113de7e6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c74a52d9102d6eaf4c2a6d630892f92260391ee5e95c9f55578a3a21b02f8b09",
+				"dweb:/ipfs/QmWjPAqmGF88HpkR4BCf3pgimrZvLf4ERVG2Tz5EDjKP62"
+			]
+		},
+		"NewFraxProtocol/contracts/FXS/FXS.sol": {
+			"keccak256": "0xf99bdd47f06fe38a93089865ba35e71d7ec8cb1ea5112c1b3a631857eed99abd",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://8e577f556be3bdcba8fcf105d87a609ebf6bd4af235a3494ae7d79d99e1d5d15",
+				"dweb:/ipfs/QmPWqiWkc359GtgeNxSowEScSMRcAKT2M8Sz6rJrU517eq"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/Frax.sol": {
+			"keccak256": "0x50bd429aa0775dd04c43e07d7f72641087783a476a3f6d55b820b6ed385336d2",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7aded4d58c36a59fcc8707cda97452d8319120eba341c6d267d83dfb7e329ee0",
+				"dweb:/ipfs/QmRog34eEnBG82ohC6npJNa2PKv2oM5BxRHaFXJT39EdPf"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/Pools/FraxPool.sol": {
+			"keccak256": "0xc4fba7e335b2066dadec45caa87ab25730a30e2bbe0ed3aed91e8354ea173306",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ec653aaf84eb3864e09b14b6ba4af060abd0045bb8286c673596f5c764b68d35",
+				"dweb:/ipfs/QmbAFgkh4r52Shkc48wbcKUU4r1VHUNSAu736yt4XaBNqM"
+			]
+		},
+		"NewFraxProtocol/contracts/Frax/Pools/FraxPoolLibrary.sol": {
+			"keccak256": "0x180b06a68540715f3201cca08fd166e4c5e0d3cd75c0d02b2e1b5323a2a66f3c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1731cc8b9c84db20c70e56ed864dccc08334e63fb036eed6974e818540a23e89",
+				"dweb:/ipfs/QmXqmNFMVCetmbLiWqutVfcuG9yJ7w9Sd51e3uv5QuLBo4"
+			]
+		},
+		"NewFraxProtocol/contracts/Governance/AccessControl.sol": {
+			"keccak256": "0x749b2c0e515a59c6d03cf4908a252ebc5d2b482ca3fd7ec997d1143c302f4e89",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7301423d6e284c10275e8e79f6a62827e9b857794b74f9525c7815d3e31ebd4b",
+				"dweb:/ipfs/QmYX4LrKteYnqNk2jF5H6KgGDbq8hB5ci2aa2U7Xgr3sUq"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/Babylonian.sol": {
+			"keccak256": "0x16a99f4bcc5cedcea601100559ae61740d24eddc1d3e476d8083c7858c982de7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1634c520598b50d2c76a7b99909aa1df8de11bab73d8a474fa1e9afabede939c",
+				"dweb:/ipfs/QmQaT3XUdmdsbS6ai7aLG1TiZ17jmj8JZTb2pGzx7V8J4R"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/FixedPoint.sol": {
+			"keccak256": "0x639489c714cccdb622df0f168c606da0b02296c38b0c605a858e3338b7ba4665",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b381d9b31c2fad376c5fceac4d8070b89e57e502cd24be2dcf86849bc3266b94",
+				"dweb:/ipfs/QmTceSL8h2t3gMPLszGeH8X5QmjAwSHxDqyLm48fVLs1Vs"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/SafeMath.sol": {
+			"keccak256": "0x43a20f7cf4c4319f81450d53779455e88a7ab80bdfc43925156ed4083b74a180",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85317e177f613c29156ffe0b1c1c29c31fedfea1ffc373c9d7f393ef51372728",
+				"dweb:/ipfs/QmckZqe6wjgKWd4BTPUjRY1ofC9CsZKxAgXPFCKBisuJdr"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/AggregatorV3Interface.sol": {
+			"keccak256": "0x5e7761d06fea8192b159f3e287600cba23c5bdbe3a1bbe1050cc3ab9ed4273a4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b6956df5c8ad84b2aba10e7d07c9f4976ae9ebdd65509729e752900a6f6475d",
+				"dweb:/ipfs/QmP2MJZdZsJWRozMHmCtq4SU5ePKEHxCzhyqtBFpAjCDny"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/ChainlinkETHUSDPriceConsumer.sol": {
+			"keccak256": "0xbf1e543a75d71400e208b338135234be319e9bfcf8978e1424494f34287c4ecf",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://205c869d37aa9e8bda354484a42688aab8fd8c44ae4b9c9379773be177d3a1fe",
+				"dweb:/ipfs/QmbDfFK7K17Yq6niktSf8xnXKvRw4EK5uWemqSS2cHjtc1"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/UniswapPairOracle.sol": {
+			"keccak256": "0x5d9c113905697a17627839a8cac8d1461113394a4b07631449f5902ac47df5ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d029fed0b864f9ef66fb956206d05765a71275516f0e0402045c34dffcc1bc47",
+				"dweb:/ipfs/QmcJCmExMog7fUSP4JXq9T7pHb2c9dtzDcN3r8TnVF7aM8"
+			]
+		},
+		"NewFraxProtocol/contracts/Staking/Owned.sol": {
+			"keccak256": "0x89e1dde7e13d0109febf812e7d97dda7f24feb7cfe90239c0f7585d1143407d1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://917add49808f1df4025a7a33e8444661261ebf3ea9f02bcd44c698b1c1e4e7e6",
+				"dweb:/ipfs/QmVSVA3swHsqEy5F2n8YBGB91cL66xVkJCezkjY9VAjnwE"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/Interfaces/IUniswapV2Factory.sol": {
+			"keccak256": "0x87c74a8e918023f916cdc22f6a1cac447bff16f769828d4aae36876187c6f7d3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9a547dae4a1432fec9c4fb4723dc9a494607576a463383f7a51e3ed322ddff2b",
+				"dweb:/ipfs/QmP5GMhBZRh6J2dLYeUJCTJV5kVE8w6ASXXxxVphcGo6Xk"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/Interfaces/IUniswapV2Pair.sol": {
+			"keccak256": "0x7ee004cef073122501b9e1a5a0bf796aaef7f591d447ee8a8f430b38d811518c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://575d172f68843a1a60c95666995b836f6f17f042a02c31c8905037189dcadd2a",
+				"dweb:/ipfs/QmV6dTvxSfcUBWoNC91fxX26gwHdJD49mRGzPHZcpPFuQU"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/TransferHelper.sol": {
+			"keccak256": "0x2eb33792741584e83e0794a7493335b5dce9a9b675dda9e647ce29d88a40a196",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0359fd7076306116b7af564be4f7d555b70daa273652ee8a1a89a64cd4e1ad18",
+				"dweb:/ipfs/QmVbUyw2GeQZEZoUN48aPd5KwKHbxAYCvWqkkkbC9APNH2"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/UniswapV2Library.sol": {
+			"keccak256": "0x80e0745c3e97d42bf75ab8b2dde5c6d7b042fa3e6ce23acf25b8d9000913e65b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://23111ed2be900ae0a25e6a8cfbc76c850a3a6a30c9787b58b8ff778da8f63763",
+				"dweb:/ipfs/QmNeTnGGF3Dm58YCuH8uGJ5niYsjfFRjARCJof5H1VkzXp"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/UniswapV2OracleLibrary.sol": {
+			"keccak256": "0x171029f2ea4b908809fe785b0ce12bbc359d2625bbf907992b0d59174d645285",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://525417b096c69b05bf72a648aa45dfc27cd39e876cfdc9bf279257e4851f026d",
+				"dweb:/ipfs/QmdrRbJGp8YJpRTDj4UmXALCYR4vzabyTXAYuHUUciet32"
+			]
+		},
+		"NewFraxProtocol/contracts/Utils/Address.sol": {
+			"keccak256": "0x60b5be0e623c9caa7d5ae4c9cf623c4f984ddb87837d2967fd070ef119f8a4ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://00aecccf754f6c47afc02fc0b9fa80f5c0d76b868dad1dfe027efe336aa9d7f7",
+				"dweb:/ipfs/QmZSAq9jF52a6LgJjxokShg81Lnd32mK4JPNmeTvFD49tN"
+			]
+		},
+		"NewFraxProtocol/contracts/Utils/EnumerableSet.sol": {
+			"keccak256": "0x685f4133ba76f930e3761c1d1414d7f6e55dd40d58b4b210cb392662a6cbd27d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://de31891bf4bd42e4a90209df5b906efe6f75b35132c531f043b2100f61bbb0d0",
+				"dweb:/ipfs/QmVdDq4DDL38spxMDmYYe3gi5vVkRzhgmqhN2b2grr657a"
+			]
+		}
+	},
+	"version": 1
+}

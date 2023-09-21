@@ -1,0 +1,199 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "collateral_amount_d18",
+						"type": "uint256"
+					}
+				],
+				"name": "calcMint1t1FRAX",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "fxs_price_usd",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fxs_amount_d18",
+						"type": "uint256"
+					}
+				],
+				"name": "calcMintAlgorithmicFRAX",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "collateral_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "col_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "global_collat_value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "frax_total_supply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "global_collateral_ratio",
+						"type": "uint256"
+					}
+				],
+				"name": "calcRecollateralizeFRAXInner",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "col_price_usd",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "FRAX_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "calcRedeem1t1FRAX",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "total_supply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "global_collateral_ratio",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "global_collat_value",
+						"type": "uint256"
+					}
+				],
+				"name": "recollateralizeAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Frax/Pools/FraxPoolLibrary.sol": "FraxPoolLibrary"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Frax/Pools/FraxPoolLibrary.sol": {
+			"keccak256": "0x180b06a68540715f3201cca08fd166e4c5e0d3cd75c0d02b2e1b5323a2a66f3c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1731cc8b9c84db20c70e56ed864dccc08334e63fb036eed6974e818540a23e89",
+				"dweb:/ipfs/QmXqmNFMVCetmbLiWqutVfcuG9yJ7w9Sd51e3uv5QuLBo4"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/SafeMath.sol": {
+			"keccak256": "0x43a20f7cf4c4319f81450d53779455e88a7ab80bdfc43925156ed4083b74a180",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85317e177f613c29156ffe0b1c1c29c31fedfea1ffc373c9d7f393ef51372728",
+				"dweb:/ipfs/QmckZqe6wjgKWd4BTPUjRY1ofC9CsZKxAgXPFCKBisuJdr"
+			]
+		}
+	},
+	"version": 1
+}

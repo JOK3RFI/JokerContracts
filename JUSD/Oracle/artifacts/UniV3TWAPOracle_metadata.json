@@ -1,0 +1,531 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_creator_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_timelock_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_pool_address",
+						"type": "address"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_decimals",
+						"type": "uint8"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerNominated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "acceptOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "decimals",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "description",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPrecisePrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount_out",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "_num_cardinals",
+						"type": "uint16"
+					}
+				],
+				"name": "increaseObservationCardinality",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "latestRoundData",
+				"outputs": [
+					{
+						"internalType": "uint80",
+						"name": "roundId",
+						"type": "uint80"
+					},
+					{
+						"internalType": "int256",
+						"name": "answer",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "startedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "updatedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint80",
+						"name": "answeredInRound",
+						"type": "uint80"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lookback_secs",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "nominateNewOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nominatedOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pool",
+				"outputs": [
+					{
+						"internalType": "contract IUniswapV3Pool",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price_in_token0",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_secs",
+						"type": "uint32"
+					}
+				],
+				"name": "setTWAPLookbackSec",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_new_timelock_address",
+						"type": "address"
+					}
+				],
+				"name": "setTimelock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "timelock_address",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "toggleTokenForPricing",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token0",
+				"outputs": [
+					{
+						"internalType": "contract ERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token1",
+				"outputs": [
+					{
+						"internalType": "contract ERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token_symbols",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "base",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "pricing",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "version",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Oracle/UniV3TWAPOracle.sol": "UniV3TWAPOracle"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Common/Context.sol": {
+			"keccak256": "0x60d51a32063a4975dbf9433d38f5849173527da72f007c38053274e06698cb54",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9ee6938d731aac55f6176c30ba4fc8456a63de57a7a2d659f43a053dfb381d3",
+				"dweb:/ipfs/QmRyq4LneV4qz8uLdEhTU4YndjT365PJBPvK4btHKtmSSG"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/ERC20.sol": {
+			"keccak256": "0x433b9ee195d0bd257219bc337ff8aac624282a826726b18fdb299de0e3d4149e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf5f5456bd1c28eb94e86ba33d9ec9f7110613f405ad58b935c6397b81185d78",
+				"dweb:/ipfs/QmQXQCV5aGubTfmGMK4ecR3zBkj2NkBe1XJBbg5GSuUnwg"
+			]
+		},
+		"NewFraxProtocol/contracts/ERC20/IERC20.sol": {
+			"keccak256": "0x057bec1fafd7ca222117f41fcfb9c8dc1f61aa30e5a0222c981196e9113de7e6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c74a52d9102d6eaf4c2a6d630892f92260391ee5e95c9f55578a3a21b02f8b09",
+				"dweb:/ipfs/QmWjPAqmGF88HpkR4BCf3pgimrZvLf4ERVG2Tz5EDjKP62"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/SafeMath.sol": {
+			"keccak256": "0x43a20f7cf4c4319f81450d53779455e88a7ab80bdfc43925156ed4083b74a180",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85317e177f613c29156ffe0b1c1c29c31fedfea1ffc373c9d7f393ef51372728",
+				"dweb:/ipfs/QmckZqe6wjgKWd4BTPUjRY1ofC9CsZKxAgXPFCKBisuJdr"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/AggregatorV3Interface.sol": {
+			"keccak256": "0x5e7761d06fea8192b159f3e287600cba23c5bdbe3a1bbe1050cc3ab9ed4273a4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b6956df5c8ad84b2aba10e7d07c9f4976ae9ebdd65509729e752900a6f6475d",
+				"dweb:/ipfs/QmP2MJZdZsJWRozMHmCtq4SU5ePKEHxCzhyqtBFpAjCDny"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/UniV3TWAPOracle.sol": {
+			"keccak256": "0x770044e74653bdccf91bf9559f678f705979ccd1428f1752a8595eaee9a11482",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://8c95df653205e2c3993fb6547588b7248e353d71f8481231bbf1ed2efa08641a",
+				"dweb:/ipfs/QmYyXZiUNNZEVV8RBxWte9YgdJhNAVKrewnGN8E7maXsE9"
+			]
+		},
+		"NewFraxProtocol/contracts/Staking/Owned.sol": {
+			"keccak256": "0x89e1dde7e13d0109febf812e7d97dda7f24feb7cfe90239c0f7585d1143407d1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://917add49808f1df4025a7a33e8444661261ebf3ea9f02bcd44c698b1c1e4e7e6",
+				"dweb:/ipfs/QmVSVA3swHsqEy5F2n8YBGB91cL66xVkJCezkjY9VAjnwE"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/IUniswapV3Pool.sol": {
+			"keccak256": "0x4b0f62246937361e109ae1568f80338113f0e4e2c5594cf44d307999bca70364",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a1544fc28d632f4964ee7a46e206360b56596e5cc61bc0a21534ca9e9b7db910",
+				"dweb:/ipfs/QmdJBFqmuQhDNzZEyMsgn2JRQy16dDVv1PMsFQvtQqdxpi"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/libraries/FullMath.sol": {
+			"keccak256": "0xfb6065c70131c22da0c74508b322547463bcf632a277aafd19f544a0fa2efe5e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://84b2bd294cb9e4ddd4c1e09b2cb7278b468ed60b58237bed07491d9036eb7c20",
+				"dweb:/ipfs/QmfVJbRcyHWiitZxCxZnP9JMP9EqNfrngT9MXx5FKmJw5L"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/libraries/TickMath.sol": {
+			"keccak256": "0x64eaa6899d2a1cbf1b5c2e84a2130ec313ef79932aa85df9f83d61e0148225ff",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://d985bf0eb86d2b97bed1320c6d92be9878a8dbabace5919292bd33e0bf83bf57",
+				"dweb:/ipfs/QmTbnUYHX3z23LpiZYersqyyavJHa6dDAZWtoYvDyX4hEx"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/periphery/libraries/OracleLibrary.sol": {
+			"keccak256": "0x9519b199bdad51564f403c17e5ab61d284c50f9abc92161a7879b5dfca5fac84",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3e56f026ec31f37e1380ade450683846c6f54e1b233e29df41092801150ecd2d",
+				"dweb:/ipfs/QmQy4Zm2jMTa8rwkQmmn96cVFHBLJykDxCrHGtqet66pRW"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolActions.sol": {
+			"keccak256": "0x1f57d95021445a4787b18a51e91e720e544fa45f1b79ef31eb226877140cd7ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c6e03072580ffc266adfdbf8c742bc2a993a68dc4ac0f70a0645cc0198a8697f",
+				"dweb:/ipfs/QmSXwnp3FUUm7yADpuHp4JaXiaJFtTZu9ERjUbrdL4vVT7"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolDerivedState.sol": {
+			"keccak256": "0x0a3bc1898f7cad37b6d036e380d266bee9fbc49df5efef8fd95362c361de3477",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://16a10aca90baecf32b87c2b228a56c9eba2d847c9519b6090294db12a85fef01",
+				"dweb:/ipfs/QmdZ7WoUAZ2ojM7ZJCpKX4oDU2L4XnS8kVcyDtb1geGBda"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolEvents.sol": {
+			"keccak256": "0xbb67795d245d685fca6e8f9ddfe3480fa186e47e66f9ec686f6c0509e7ac36c3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3b0ec3ecf20adb1f22b42416860c7bdaf5acb5c828c68b74ffed7d2c1825e202",
+				"dweb:/ipfs/QmRtQzn1jHnyED5yvmAwJ3G9EEvdgR4QkXcLY6C1DGeaJ7"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolImmutables.sol": {
+			"keccak256": "0xd5bf45c98de3b1591ceea3af05bc93ae94bf7d59175d71f9daebccefa9dfbd19",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://e579362eed74d95eb8ffe1c05c15aecba1574e8a0611c807e8ec4c6fd8352ace",
+				"dweb:/ipfs/QmcSewsuhat8uEfinjyHm1uM7xwnXBXV2VWK2t5bHfTLxg"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolOwnerActions.sol": {
+			"keccak256": "0xc0da87b931b6b15d8c6c1e178e0f121de64884465bda1ef7f65a29813b0ddaeb",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://29a96d3c7ae6174d7931716f0d3009d67f5990ebed70fcacc714e528adac459a",
+				"dweb:/ipfs/Qmc4gRe2bvN7DxxpLByVEZ6PjjgPkGjKxhMJjBDHs4iejF"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolState.sol": {
+			"keccak256": "0xef6082af73b0421275332493d09eb1add52a1a1ecfee68e2c136d6857f21915d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://274559a5266af090cf19129fb4d7c625b2134565273c025f76a4baf8c9976a9d",
+				"dweb:/ipfs/QmUTaYoRqDpspp6VB2skLAqruauCG41ZkGLsEyGAoQCqU4"
+			]
+		},
+		"NewFraxProtocol/contracts/Utils/Address.sol": {
+			"keccak256": "0x60b5be0e623c9caa7d5ae4c9cf623c4f984ddb87837d2967fd070ef119f8a4ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://00aecccf754f6c47afc02fc0b9fa80f5c0d76b868dad1dfe027efe336aa9d7f7",
+				"dweb:/ipfs/QmZSAq9jF52a6LgJjxokShg81Lnd32mK4JPNmeTvFD49tN"
+			]
+		}
+	},
+	"version": 1
+}

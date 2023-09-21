@@ -1,0 +1,119 @@
+{
+	"compiler": {
+		"version": "0.8.9+commit.e5eed63a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"title": "Oracle library",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Provides functions to integrate with V3 pool oracle",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Uniswap_V3/periphery/libraries/OracleLibrary.sol": "OracleLibrary"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Uniswap_V3/IUniswapV3Pool.sol": {
+			"keccak256": "0x4b0f62246937361e109ae1568f80338113f0e4e2c5594cf44d307999bca70364",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a1544fc28d632f4964ee7a46e206360b56596e5cc61bc0a21534ca9e9b7db910",
+				"dweb:/ipfs/QmdJBFqmuQhDNzZEyMsgn2JRQy16dDVv1PMsFQvtQqdxpi"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/libraries/FullMath.sol": {
+			"keccak256": "0xfb6065c70131c22da0c74508b322547463bcf632a277aafd19f544a0fa2efe5e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://84b2bd294cb9e4ddd4c1e09b2cb7278b468ed60b58237bed07491d9036eb7c20",
+				"dweb:/ipfs/QmfVJbRcyHWiitZxCxZnP9JMP9EqNfrngT9MXx5FKmJw5L"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/libraries/TickMath.sol": {
+			"keccak256": "0x64eaa6899d2a1cbf1b5c2e84a2130ec313ef79932aa85df9f83d61e0148225ff",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://d985bf0eb86d2b97bed1320c6d92be9878a8dbabace5919292bd33e0bf83bf57",
+				"dweb:/ipfs/QmTbnUYHX3z23LpiZYersqyyavJHa6dDAZWtoYvDyX4hEx"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/periphery/libraries/OracleLibrary.sol": {
+			"keccak256": "0x9519b199bdad51564f403c17e5ab61d284c50f9abc92161a7879b5dfca5fac84",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3e56f026ec31f37e1380ade450683846c6f54e1b233e29df41092801150ecd2d",
+				"dweb:/ipfs/QmQy4Zm2jMTa8rwkQmmn96cVFHBLJykDxCrHGtqet66pRW"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolActions.sol": {
+			"keccak256": "0x1f57d95021445a4787b18a51e91e720e544fa45f1b79ef31eb226877140cd7ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c6e03072580ffc266adfdbf8c742bc2a993a68dc4ac0f70a0645cc0198a8697f",
+				"dweb:/ipfs/QmSXwnp3FUUm7yADpuHp4JaXiaJFtTZu9ERjUbrdL4vVT7"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolDerivedState.sol": {
+			"keccak256": "0x0a3bc1898f7cad37b6d036e380d266bee9fbc49df5efef8fd95362c361de3477",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://16a10aca90baecf32b87c2b228a56c9eba2d847c9519b6090294db12a85fef01",
+				"dweb:/ipfs/QmdZ7WoUAZ2ojM7ZJCpKX4oDU2L4XnS8kVcyDtb1geGBda"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolEvents.sol": {
+			"keccak256": "0xbb67795d245d685fca6e8f9ddfe3480fa186e47e66f9ec686f6c0509e7ac36c3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3b0ec3ecf20adb1f22b42416860c7bdaf5acb5c828c68b74ffed7d2c1825e202",
+				"dweb:/ipfs/QmRtQzn1jHnyED5yvmAwJ3G9EEvdgR4QkXcLY6C1DGeaJ7"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolImmutables.sol": {
+			"keccak256": "0xd5bf45c98de3b1591ceea3af05bc93ae94bf7d59175d71f9daebccefa9dfbd19",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://e579362eed74d95eb8ffe1c05c15aecba1574e8a0611c807e8ec4c6fd8352ace",
+				"dweb:/ipfs/QmcSewsuhat8uEfinjyHm1uM7xwnXBXV2VWK2t5bHfTLxg"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolOwnerActions.sol": {
+			"keccak256": "0xc0da87b931b6b15d8c6c1e178e0f121de64884465bda1ef7f65a29813b0ddaeb",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://29a96d3c7ae6174d7931716f0d3009d67f5990ebed70fcacc714e528adac459a",
+				"dweb:/ipfs/Qmc4gRe2bvN7DxxpLByVEZ6PjjgPkGjKxhMJjBDHs4iejF"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap_V3/pool/IUniswapV3PoolState.sol": {
+			"keccak256": "0xef6082af73b0421275332493d09eb1add52a1a1ecfee68e2c136d6857f21915d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://274559a5266af090cf19129fb4d7c625b2134565273c025f76a4baf8c9976a9d",
+				"dweb:/ipfs/QmUTaYoRqDpspp6VB2skLAqruauCG41ZkGLsEyGAoQCqU4"
+			]
+		}
+	},
+	"version": 1
+}

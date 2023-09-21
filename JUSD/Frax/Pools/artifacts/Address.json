@@ -1,0 +1,73 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "6055604b600b8282823980515f1a607314603f577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f80fdfea26469706673582212201e5aa0784042aa9ff29a0ab63f0703fbb6a3d1147678860d93e0a955efd44a7864736f6c63430008150033",
+			"opcodes": "PUSH1 0x55 PUSH1 0x4B PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH0 BYTE PUSH1 0x73 EQ PUSH1 0x3F JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH0 MSTORE PUSH0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST ADDRESS PUSH0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0x1E GAS LOG0 PUSH25 0x4042AA9FF29A0AB63F0703FBB6A3D1147678860D93E0A955EF 0xD4 0x4A PUSH25 0x64736F6C634300081500330000000000000000000000000000 ",
+			"sourceMap": "23140:7684:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "730000000000000000000000000000000000000000301460806040525f80fdfea26469706673582212201e5aa0784042aa9ff29a0ab63f0703fbb6a3d1147678860d93e0a955efd44a7864736f6c63430008150033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0x1E GAS LOG0 PUSH25 0x4042AA9FF29A0AB63F0703FBB6A3D1147678860D93E0A955EF 0xD4 0x4A PUSH25 0x64736F6C634300081500330000000000000000000000000000 ",
+			"sourceMap": "23140:7684:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17000",
+				"executionCost": "92",
+				"totalCost": "17092"
+			},
+			"internal": {
+				"_verifyCallResult(bool,bytes memory,string memory)": "infinite",
+				"functionCall(address,bytes memory)": "infinite",
+				"functionCall(address,bytes memory,string memory)": "infinite",
+				"functionCallWithValue(address,bytes memory,uint256)": "infinite",
+				"functionCallWithValue(address,bytes memory,uint256,string memory)": "infinite",
+				"functionDelegateCall(address,bytes memory)": "infinite",
+				"functionDelegateCall(address,bytes memory,string memory)": "infinite",
+				"functionStaticCall(address,bytes memory)": "infinite",
+				"functionStaticCall(address,bytes memory,string memory)": "infinite",
+				"isContract(address)": "infinite",
+				"sendValue(address payable,uint256)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.21+commit.d9974bed"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Frax/Pools/Copy_FraxPoolV3.sol": "Context"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Frax/Pools/Copy_FraxPoolV3.sol": {
+			"keccak256": "0x3451cdd27e15a7cb25b189b6dc8a4f66bdc2097582e763cb2fd1bff84dbc6ec1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c9a832b885c255f3e1a84d2118369c8be974e8d5b6942abd4140b739d3dffefc",
+				"dweb:/ipfs/QmSjAr2HfY4C9rrWEcXhesTLd3QHQfLdB9wSH6gkj9x9i7"
+			]
+		}
+	},
+	"version": 1
+}

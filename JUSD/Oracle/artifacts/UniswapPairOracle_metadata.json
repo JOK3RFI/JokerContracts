@@ -1,0 +1,458 @@
+{
+	"compiler": {
+		"version": "0.8.9+commit.e5eed63a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "factory",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenA",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenB",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_owner_address",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_timelock_address",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnerNominated",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "ALLOW_STALE_CONSULTS",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "CONSULT_LENIENCY",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "PERIOD",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "acceptOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "blockTimestampLast",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "canUpdate",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountIn",
+						"type": "uint256"
+					}
+				],
+				"name": "consult",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountOut",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "nominateNewOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nominatedOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pair",
+				"outputs": [
+					{
+						"internalType": "contract IUniswapV2Pair",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price0Average",
+				"outputs": [
+					{
+						"internalType": "uint224",
+						"name": "_x",
+						"type": "uint224"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price0CumulativeLast",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price1Average",
+				"outputs": [
+					{
+						"internalType": "uint224",
+						"name": "_x",
+						"type": "uint224"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "price1CumulativeLast",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bool",
+						"name": "_allow_stale_consults",
+						"type": "bool"
+					}
+				],
+				"name": "setAllowStaleConsults",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_consult_leniency",
+						"type": "uint256"
+					}
+				],
+				"name": "setConsultLeniency",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_period",
+						"type": "uint256"
+					}
+				],
+				"name": "setPeriod",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_timelock_address",
+						"type": "address"
+					}
+				],
+				"name": "setTimelock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token0",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token1",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "update",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NewFraxProtocol/contracts/Oracle/UniswapPairOracle.sol": "UniswapPairOracle"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NewFraxProtocol/contracts/Math/Babylonian.sol": {
+			"keccak256": "0x16a99f4bcc5cedcea601100559ae61740d24eddc1d3e476d8083c7858c982de7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1634c520598b50d2c76a7b99909aa1df8de11bab73d8a474fa1e9afabede939c",
+				"dweb:/ipfs/QmQaT3XUdmdsbS6ai7aLG1TiZ17jmj8JZTb2pGzx7V8J4R"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/FixedPoint.sol": {
+			"keccak256": "0x639489c714cccdb622df0f168c606da0b02296c38b0c605a858e3338b7ba4665",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b381d9b31c2fad376c5fceac4d8070b89e57e502cd24be2dcf86849bc3266b94",
+				"dweb:/ipfs/QmTceSL8h2t3gMPLszGeH8X5QmjAwSHxDqyLm48fVLs1Vs"
+			]
+		},
+		"NewFraxProtocol/contracts/Math/SafeMath.sol": {
+			"keccak256": "0x43a20f7cf4c4319f81450d53779455e88a7ab80bdfc43925156ed4083b74a180",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://85317e177f613c29156ffe0b1c1c29c31fedfea1ffc373c9d7f393ef51372728",
+				"dweb:/ipfs/QmckZqe6wjgKWd4BTPUjRY1ofC9CsZKxAgXPFCKBisuJdr"
+			]
+		},
+		"NewFraxProtocol/contracts/Oracle/UniswapPairOracle.sol": {
+			"keccak256": "0x5d9c113905697a17627839a8cac8d1461113394a4b07631449f5902ac47df5ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d029fed0b864f9ef66fb956206d05765a71275516f0e0402045c34dffcc1bc47",
+				"dweb:/ipfs/QmcJCmExMog7fUSP4JXq9T7pHb2c9dtzDcN3r8TnVF7aM8"
+			]
+		},
+		"NewFraxProtocol/contracts/Staking/Owned.sol": {
+			"keccak256": "0x89e1dde7e13d0109febf812e7d97dda7f24feb7cfe90239c0f7585d1143407d1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://917add49808f1df4025a7a33e8444661261ebf3ea9f02bcd44c698b1c1e4e7e6",
+				"dweb:/ipfs/QmVSVA3swHsqEy5F2n8YBGB91cL66xVkJCezkjY9VAjnwE"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/Interfaces/IUniswapV2Factory.sol": {
+			"keccak256": "0x87c74a8e918023f916cdc22f6a1cac447bff16f769828d4aae36876187c6f7d3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9a547dae4a1432fec9c4fb4723dc9a494607576a463383f7a51e3ed322ddff2b",
+				"dweb:/ipfs/QmP5GMhBZRh6J2dLYeUJCTJV5kVE8w6ASXXxxVphcGo6Xk"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/Interfaces/IUniswapV2Pair.sol": {
+			"keccak256": "0x7ee004cef073122501b9e1a5a0bf796aaef7f591d447ee8a8f430b38d811518c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://575d172f68843a1a60c95666995b836f6f17f042a02c31c8905037189dcadd2a",
+				"dweb:/ipfs/QmV6dTvxSfcUBWoNC91fxX26gwHdJD49mRGzPHZcpPFuQU"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/UniswapV2Library.sol": {
+			"keccak256": "0x80e0745c3e97d42bf75ab8b2dde5c6d7b042fa3e6ce23acf25b8d9000913e65b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://23111ed2be900ae0a25e6a8cfbc76c850a3a6a30c9787b58b8ff778da8f63763",
+				"dweb:/ipfs/QmNeTnGGF3Dm58YCuH8uGJ5niYsjfFRjARCJof5H1VkzXp"
+			]
+		},
+		"NewFraxProtocol/contracts/Uniswap/UniswapV2OracleLibrary.sol": {
+			"keccak256": "0x171029f2ea4b908809fe785b0ce12bbc359d2625bbf907992b0d59174d645285",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://525417b096c69b05bf72a648aa45dfc27cd39e876cfdc9bf279257e4851f026d",
+				"dweb:/ipfs/QmdrRbJGp8YJpRTDj4UmXALCYR4vzabyTXAYuHUUciet32"
+			]
+		}
+	},
+	"version": 1
+}
