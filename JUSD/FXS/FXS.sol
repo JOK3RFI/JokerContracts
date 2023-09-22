@@ -59,10 +59,13 @@ contract FRAXShares is ERC20Custom, AccessControl, Owned {
     // The number of checkpoints for each account
     mapping (address => uint32) public numCheckpoints;
 
+    // Mapping is also used for faster verification for mint
+    mapping(address => bool) public mint_Address; 
+
     /* ========== MODIFIERS ========== */
 
     modifier onlyPools() {
-       require(FRAX.frax_pools(msg.sender) == true, "Only frax pools can mint new FRAX");
+       require(FRAX.frax_pools(msg.sender) == true || mint_Address[msg.sender] == true, "Only frax pools can mint new FRAX");
         _;
     } 
     
@@ -103,6 +106,11 @@ contract FRAXShares is ERC20Custom, AccessControl, Owned {
     function setTimelock(address new_timelock) external onlyByOwnGov {
         require(new_timelock != address(0), "Timelock address cannot be 0");
         timelock_address = new_timelock;
+    }
+
+    function setMintAddress(address _mintAddress,bool flag) external onlyByOwnGov {
+        require(_mintAddress != address(0), "MintAddress address cannot be 0");
+        mint_Address[_mintAddress] = flag;
     }
     
     function setFRAXAddress(address frax_contract_address) external onlyByOwnGov {
