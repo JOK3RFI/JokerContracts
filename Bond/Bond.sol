@@ -161,11 +161,13 @@ contract BondContract {
                 users[msg.sender].userRewards = 0;
                 users[msg.sender].claimeblePeriod = 0;
                 users[msg.sender].claimedTime = 0;
+                users[msg.sender].claimedAmount = 0;
             }
             else{
                 users[msg.sender].userRewards = (users[msg.sender].userRewards).sub(claimAmount);
                 users[msg.sender].claimeblePeriod = (users[msg.sender].claimeblePeriod).sub(timeCount);
                 users[msg.sender].claimedTime = block.timestamp;
+                users[msg.sender].claimedAmount = users[msg.sender].claimedAmount + claimAmount.div(1e9) ;
             }
             
         
@@ -217,7 +219,12 @@ contract BondContract {
     function setClaimDuration(uint256 _timeDuration) public {
         timeDuration = _timeDuration;
     }
+
+
+
   
+
+    
 }
 
 

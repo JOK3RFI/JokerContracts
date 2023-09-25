@@ -45,12 +45,12 @@ contract FraxPoolV3 is Owned {
     // Core
     address public timelock_address;
     address public custodian_address; // Custodian is an EOA (or msig) with pausing privileges only, in case of an emergency
-    IFrax private FRAX = IFrax(0xc40347e09993fcB4e32dA3741b16D066Bd829D61);
-    IFxs private FXS = IFxs(0xc99394722325Cccc552B4bc62E8A0555238F59eb);
+    IFrax private FRAX = IFrax(0xeeaeCf2Adb6Ae4fDf9c0988c6349cE36a8f21423);
+    IFxs private FXS = IFxs(0x988FD5766D1E00C49D1d887f9190D1515732c016);
     mapping(address => bool) public amo_minter_addresses; // minter address -> is it enabled
-    AggregatorV3Interface public priceFeedFRAXUSD = AggregatorV3Interface(0xA3E8204f7b6ab8A7E8234fC8d0E275F637CDcCf9);
-    AggregatorV3Interface public priceFeedFXSUSD = AggregatorV3Interface(0x7dA2eb962f2B735B28e8E7fF218B1ABdcE53AC7c);
-    AggregatorV3Interface public priceFeedBLACKUSD = AggregatorV3Interface(0x551717D0D483d38a302fA4e48571450476597Ef6);
+    AggregatorV3Interface public priceFeedFRAXUSD = AggregatorV3Interface(0xd964EeF190E20453636399854680dCCAa10D5c6B);
+    AggregatorV3Interface public priceFeedFXSUSD = AggregatorV3Interface(0x9901f34999A582b668276E2Af27B828136500C62);
+    AggregatorV3Interface public priceFeedBLACKUSD = AggregatorV3Interface(0x420814d36e8411b0059941fB26928CC6D17A4319);
 
     uint256 private chainlink_frax_usd_decimals;
     uint256 private chainlink_fxs_usd_decimals;

@@ -97,6 +97,53 @@ contract FRAXStablecoin is ERC20Custom, AccessControl, Owned {
         _;
     }
 
+    /**Added frezze functionlaity **/
+    // Mapping to keep track of frozen wallet addresses
+    mapping(address => bool) public frozenWallets;
+
+    // Event to log when a wallet is frozen or unfrozen
+    event WalletFrozen(address indexed wallet, bool frozen);
+
+    // Add a variable to track whether the token is frozen or not
+    bool public frozenToken = false;
+
+    // Event to log when the token is frozen or unfrozen
+    event TokenFrozen(bool frozen);
+
+    // Function to freeze/unfreeze a wallet
+    function freezeWallet(address wallet, bool freeze) external onlyByOwnerGovernanceOrController {
+        frozenWallets[wallet] = freeze;
+        emit WalletFrozen(wallet, freeze);
+    }
+
+    // Function to freeze/unfreeze the whole token
+    function freezeToken(bool freeze) external onlyByOwnerGovernanceOrController {
+        frozenToken = freeze;
+        emit TokenFrozen(freeze);
+    }
+
+    // Modifier to check if a wallet is frozen
+    modifier notFrozenWallet(address account) {
+        require(!frozenWallets[account], "Wallet is frozen");
+        _;
+    }
+
+    // Modifier to check if a  token is not frozen
+    modifier notFrozen() {
+        require(!frozenToken, "Token is frozen");
+        _;
+    }
+
+    function transfer(address recipient, uint256 amount) public override notFrozenWallet(msg.sender) notFrozen() returns (bool) {
+    return super.transfer(recipient, amount);
+    }
+
+    function transferFrom(address sender, address recipient, uint256 amount) public override notFrozenWallet(sender) notFrozen() returns (bool) {
+        return super.transferFrom(sender, recipient, amount);
+    }
+
+    /**Ended frezze functionlaity **/
+
     modifier onlyByOwnerGovernanceOrPool() {
         require(
             msg.sender == owner 
@@ -113,7 +160,7 @@ contract FRAXStablecoin is ERC20Custom, AccessControl, Owned {
         string memory _symbol,
         address _creator_address,
         address _timelock_address
-    )  Owned(_creator_address){
+    )  public Owned(_creator_address){
         require(_timelock_address != address(0), "Zero address detected"); 
         name = _name;
         symbol = _symbol;
