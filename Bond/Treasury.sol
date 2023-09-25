@@ -60,7 +60,7 @@ contract TreasuryContract {
     IFxs public dimeToken; // Address of the DimeToken contract
     IERC20 public blackToken; // Address of the BlackToken contract
     IERC20 public daiToken;   // Address of the DaiToken contract
-    address public  bond;
+    address public  bond; // Address of the Bond contract
 
     constructor(address _dimeToken, address _blackToken, address _daiToken) {
         owner = msg.sender;
