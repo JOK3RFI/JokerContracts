@@ -60,14 +60,15 @@ contract TreasuryContract {
     IFxs public dimeToken; // Address of the DimeToken contract
     IERC20 public blackToken; // Address of the BlackToken contract
     IERC20 public daiToken;   // Address of the DaiToken contract
-    address public  bond; // Address of the Bond contract
+    address public  bond;
+    address public communityWallet;
 
-    constructor(address _dimeToken, address _blackToken, address _daiToken) {
+    constructor(address _dimeToken, address _blackToken, address _daiToken,address _communityWallet) {
         owner = msg.sender;
         dimeToken = IFxs(_dimeToken);
         blackToken = IERC20(_blackToken);
         daiToken = IERC20(_daiToken);
-        
+        communityWallet = _communityWallet;
     }
 
     modifier onlyOwner() {
@@ -94,7 +95,9 @@ contract TreasuryContract {
 
     function mintDime(uint256 amount) external  onlyBond {
         // Mint DimeToken and send it to the this contract
-        dimeToken.mint(address(this), amount);
+        uint256 twenty_fivePer = (amount*(25))/(100);
+        dimeToken.mint(address(this), (amount - (twenty_fivePer)));
+        dimeToken.mint(communityWallet,twenty_fivePer);
     }
 
     function burnDime(uint256 amount) external  onlyBond {
@@ -110,6 +113,12 @@ contract TreasuryContract {
     function setBondAddress(address _bondAddress) external  onlyOwner {
       
         bond = _bondAddress;
+    }
+
+     
+    function setCommunityAddress(address _communityWallet) external  onlyOwner {
+      
+        communityWallet = _communityWallet;
     }
 
     //emergency withdrawl
