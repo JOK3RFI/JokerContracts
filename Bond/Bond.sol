@@ -35,6 +35,7 @@ contract BondContract {
    
     FRAXStablecoin public  JUSD;
     ITreasuryContract  public  Treasury;
+    AggregatorV3Interface public priceFeedDAIUSD; 
   
 
     uint256 public constant PRICE_PRECISION = 1e6; // Precision for price calculation
@@ -63,16 +64,19 @@ contract BondContract {
 
     constructor(
         address _daiTokenAddress,
-        address _dimeTokenAddress,    
+        address _dimeTokenAddress,  
+        address _priceFeedDAIUSD,  
         uint256 _timeDuration,
         uint256 _epochHours
     ) {
         owner = msg.sender;
         daiToken = IERC20(_daiTokenAddress);
         dimeToken = IERC20(_dimeTokenAddress);
-        JUSD = FRAXStablecoin(0xeeaeCf2Adb6Ae4fDf9c0988c6349cE36a8f21423);        
+        JUSD = FRAXStablecoin(0xeeaeCf2Adb6Ae4fDf9c0988c6349cE36a8f21423);
+        priceFeedDAIUSD = AggregatorV3Interface(_priceFeedDAIUSD);        
         timeDuration = _timeDuration;
         epochHours = _epochHours;
+        chainlink_dai_usd_decimals = priceFeedDAIUSD.decimals(); 
 
     }
 
@@ -86,14 +90,25 @@ contract BondContract {
        Treasury = ITreasuryContract(_treasury);
     }
 
-   
+    
+   // Function to get the price of the x DAI in 1USD
+    function getDAIPrice() public view returns (uint256) {
+        (uint80 roundID, int price, , uint256 updatedAt, uint80 answeredInRound) = priceFeedDAIUSD.latestRoundData();
+        require(price >= 0 && updatedAt != 0 && answeredInRound >= roundID, "Invalid chainlink price");
+
+        uint256 getDAIPrice = uint256(price).mul(PRICE_PRECISION).mul(PRICE_PRECISION).div(uint256(10) ** chainlink_dai_usd_decimals);
+    
+        uint256 price_vs_eth = PRICE_PRECISION.mul(PRICE_PRECISION).mul(PRICE_PRECISION).div(getDAIPrice);
+
+        return JUSD.eth_usd_price().mul(PRICE_PRECISION).div(price_vs_eth);
+    }
 
     // Function to deposit DAI tokens and receive DIME tokens with a 20% discount
     function depositDAI(uint256 amount) external {
         require(lock == false,"Deposit is Locked");
         require(amount > 0, "Amount must be greater than zero");
         // Calculate the price of X DAI in  1 USD
-        uint256 daiToUSDPrice = JUSD.eth_usd_price(); // Implement your DAI price function
+        uint256 daiToUSDPrice = getDAIPrice(); // Implement your DAI price function
 
         // Calculate the price of 1 ELEM in USD
         uint256 blackToUSDPrice = JUSD.black_price(); // Implement your DIME price function
