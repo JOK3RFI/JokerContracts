@@ -102,8 +102,11 @@ contract TreasuryContract {
 
     function burnDime(uint256 amount) external  onlyBond {
         // Mint DimeToken and send it to the this contract
+        dimeToken.approve(address(this), amount);
         dimeToken.pool_burn_from(address(this), amount);
     }
+
+   
 
     function BlackTransfer(uint256 amount,address _toSend) external  onlyBond {
         // Mint DimeToken and send it to the this contract
