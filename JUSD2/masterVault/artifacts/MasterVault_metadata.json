@@ -1,0 +1,1402 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "binancePool",
+						"type": "address"
+					}
+				],
+				"name": "BinancePoolChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "assets",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "shares",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newDepositFee",
+						"type": "uint256"
+					}
+				],
+				"name": "DepositFeeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DepositedToStrategy",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FeeClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "feeReceiver",
+						"type": "address"
+					}
+				],
+				"name": "FeeReceiverChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newManager",
+						"type": "address"
+					}
+				],
+				"name": "ManagerAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "manager",
+						"type": "address"
+					}
+				],
+				"name": "ManagerRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newMaxDepositFee",
+						"type": "uint256"
+					}
+				],
+				"name": "MaxDepositFeeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newMaxWithdrawalFee",
+						"type": "uint256"
+					}
+				],
+				"name": "MaxWithdrawalFeeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					}
+				],
+				"name": "ProviderChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ceRouter",
+						"type": "address"
+					}
+				],
+				"name": "RouterChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "allocation",
+						"type": "uint256"
+					}
+				],
+				"name": "StrategyAdded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "allocation",
+						"type": "uint256"
+					}
+				],
+				"name": "StrategyAllocationChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldStrategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newStrategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newAllocation",
+						"type": "uint256"
+					}
+				],
+				"name": "StrategyMigrated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "cap",
+						"type": "uint256"
+					}
+				],
+				"name": "WaitingPoolCapChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "waitingPool",
+						"type": "address"
+					}
+				],
+				"name": "WaitingPoolChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "assets",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "shares",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdraw",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newWithdrawalFee",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawalFeeChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawnFromStrategy",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawnInTokenFromStrategy",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "MAX_STRATEGIES",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newManager",
+						"type": "address"
+					}
+				],
+				"name": "addManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "allocate",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "asset",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "availableToWithdraw",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "available",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "balanceOfTokenFromStrategy",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address payable",
+						"name": "_feeReceiver",
+						"type": "address"
+					}
+				],
+				"name": "changeFeeReceiver",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newProvider",
+						"type": "address"
+					}
+				],
+				"name": "changeProvider",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "allocation",
+						"type": "uint256"
+					}
+				],
+				"name": "changeStrategyAllocation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "depositAllToStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "depositETH",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "shares",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "depositFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "depositToStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateInTokenFromStrategy",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "feeEarned",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "feeReceiver",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "maxDepositFees",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxWithdrawalFees",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "maxStrategies",
+						"type": "uint8"
+					},
+					{
+						"internalType": "address",
+						"name": "ceToken",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "manager",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxDepositFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxWithdrawalFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "oldStrategy",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "newStrategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "newAllocation",
+						"type": "uint256"
+					}
+				],
+				"name": "migrateStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "provider",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_manager",
+						"type": "address"
+					}
+				],
+				"name": "removeManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "retireStrat",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newDepositFee",
+						"type": "uint256"
+					}
+				],
+				"name": "setDepositFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "allocation",
+						"type": "uint256"
+					}
+				],
+				"name": "setStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newWithdrawalFee",
+						"type": "uint256"
+					}
+				],
+				"name": "setWithdrawalFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "strategies",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "strategyParams",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "allocation",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "debt",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalAssetInVault",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "balance",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalAssets",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalDebt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unPause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "vaultToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "waitingPool",
+				"outputs": [
+					{
+						"internalType": "contract IWaitingPool",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "withdrawAllFromStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawETH",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "shares",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawFromStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawInTokenFromStrategy",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawalFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addManager(address)": {
+					"details": "only owner can add new manager",
+					"params": {
+						"newManager": "new manager address"
+					}
+				},
+				"allocate()": {
+					"details": "Tries to allocate funds to strategies based on their allocations. NOTE: OnlyManager can trigger this function      (It will be triggered mostly in case of deposits)"
+				},
+				"availableToWithdraw()": {
+					"details": "Returns the amount of assets that can be withdrawn instantly"
+				},
+				"changeFeeReceiver(address)": {
+					"details": "only owner can change fee receiver address",
+					"params": {
+						"_feeReceiver": "new fee receiver address"
+					}
+				},
+				"changeProvider(address)": {
+					"details": "only owner can change provider address",
+					"params": {
+						"newProvider": "new provider address"
+					}
+				},
+				"changeStrategyAllocation(address,uint256)": {
+					"details": "only owner can change strategy's allocation",
+					"params": {
+						"allocation": "new allocation - percentage of total assets available in the contract                   that needs to be allocated to the new strategy",
+						"strategy": "strategy address"
+					}
+				},
+				"depositAllToStrategy(address)": {
+					"details": "deposits all the assets into the given strategy",
+					"params": {
+						"strategy": "address of the strategy"
+					}
+				},
+				"depositETH()": {
+					"details": "deposits assets and mints shares(amount - (swapFee + depositFee)) to caller's address",
+					"returns": {
+						"shares": "- number of minted vault tokens"
+					}
+				},
+				"depositToStrategy(address,uint256)": {
+					"details": "deposits specific amount of assets into the given strategy",
+					"params": {
+						"amount": "assets to deposit into strategy",
+						"strategy": "address of the strategy"
+					}
+				},
+				"initialize(uint256,uint256,uint8,address)": {
+					"details": "initialize function - Constructor for Upgradable contract, can be only called once during deploymentDeploys the contract and sets msg.sender as owner",
+					"params": {
+						"maxDepositFees": "Fees charged in parts per million; 1% = 10000ppm",
+						"maxStrategies": "Number of maximum strategies",
+						"maxWithdrawalFees": "Fees charged in parts per million; 1% = 10000ppm"
+					}
+				},
+				"migrateStrategy(address,address,uint256)": {
+					"details": "migrates strategy contract - withdraws everything from the oldStrategy and       overwrites it with new strategy",
+					"params": {
+						"newAllocation": "percentage of total assets available in the contract                      that needs to be allocated to the new strategy",
+						"newStrategy": "address of the new strategy ",
+						"oldStrategy": "address of the old strategy"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				},
+				"removeManager(address)": {
+					"details": "only owner can remove manager",
+					"params": {
+						"_manager": "manager address"
+					}
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"retireStrat(address)": {
+					"details": "withdraws all the assets from the strategy and marks it inactive",
+					"params": {
+						"strategy": "address of the strategy NOTE: To avoid any unforeseen issues because of solidity divisions        and always be able to deactivate a strategy,        it withdraws strategy's (debt - 10) assets and set debt to 0."
+					}
+				},
+				"setDepositFee(uint256)": {
+					"details": "only owner can set new deposit fee",
+					"params": {
+						"newDepositFee": "new deposit fee percentage"
+					}
+				},
+				"setStrategy(address,uint256)": {
+					"details": "sets new strategy",
+					"params": {
+						"allocation": "percentage of total assets available in the contract                    that needs to be allocated to the given strategy",
+						"strategy": "address of the strategy"
+					}
+				},
+				"setWithdrawalFee(uint256)": {
+					"details": "only owner can set new withdrawal fee",
+					"params": {
+						"newWithdrawalFee": "new withdrawal fee percentage"
+					}
+				},
+				"totalAssetInVault()": {
+					"details": "Returns the amount of assets present in the contract(assetBalance - feeEarned)"
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"withdrawAllFromStrategy(address)": {
+					"details": "withdraw strategy's total debt",
+					"params": {
+						"strategy": "address of the strategy"
+					}
+				},
+				"withdrawETH(address,uint256)": {
+					"details": "burns vault tokens and withdraws(amount - swapFee + withdrawalFee) to callers address",
+					"params": {
+						"account": "receipient's address",
+						"amount": "amount of assets to withdraw"
+					},
+					"returns": {
+						"shares": ": amount of assets(excluding fee)"
+					}
+				},
+				"withdrawFee()": {
+					"details": "only owner can call this function to withdraw earned fees"
+				},
+				"withdrawFromStrategy(address,uint256)": {
+					"details": "withdraw specific amount of assets from the given strategy",
+					"params": {
+						"amount": "assets to withdraw from the strategy",
+						"strategy": "address of the strategy"
+					}
+				},
+				"withdrawInTokenFromStrategy(address,address,uint256)": {
+					"details": "withdraw specific amount of assets from the given strategy, will get (aBNBc/stkBNB/snBNB/BNBx)",
+					"params": {
+						"amount": "assets to withdrawInToken from the strategy",
+						"strategy": "address of the strategy"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"pause()": {
+					"notice": "PAUSABLE FUNCTIONALITY"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Heliocontracts/contracts/masterVault/MasterVault.sol": "MasterVault"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0x247c62047745915c0af6b955470a72d1696ebad4352d7d3011aef1a2463cd888",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7fc8396619de513c96b6e00301b88dd790e83542aab918425633a5f7297a15a",
+				"dweb:/ipfs/QmXbP4kiZyp7guuS7xe8KaybnwkRPGrBc2Kbi3vhcTfpxb"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x0203dcadc5737d9ef2c211d6fa15d18ebc3b30dfa51903b64870b01a062b0b4e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6eb2fd1e9894dbe778f4b8131adecebe570689e63cf892f4e21257bfe1252497",
+				"dweb:/ipfs/QmXgUGNfZvrn6N2miv3nooSs7Jm34A41qz94fu2GtDFcx8"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol": {
+			"keccak256": "0x40c636b4572ff5f1dc50cf22097e93c0723ee14eff87e99ac2b02636eeca1250",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9c7d1f5e15633ab912b74c2f57e24559e66b03232300d4b27ff0f25bc452ecad",
+				"dweb:/ipfs/QmYTJkc1cntYkKQ1Tu11nBcJLakiy93Tjytc4XHELo4GmR"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x8cc03c5ac17e8a7396e487cda41fc1f1dfdb91db7d528e6da84bee3b6dd7e167",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://607818f1b44548c2d8268176f73cdb290e1faed971b1061930d92698366e2a11",
+				"dweb:/ipfs/QmQibMe3r5no95b6q7isGT5R75V8xSofWEDLXzp95b7LgZ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x611aa3f23e59cfdd1863c536776407b3e33d695152a266fa7cfb34440a29a8a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9b4b2110b7f2b3eb32951bc08046fa90feccffa594e1176cb91cdfb0e94726b4",
+				"dweb:/ipfs/QmSxLwYjicf9zWFuieRc8WQwE4FisA1Um5jp1iSa731TGt"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0x963ea7f0b48b032eef72fe3a7582edf78408d6f834115b9feadd673a4d5bd149",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d6520943ea55fdf5f0bafb39ed909f64de17051bc954ff3e88c9e5621412c79c",
+				"dweb:/ipfs/QmWZ4rAKTQbNG2HxGs46AcTXShsVytKeLs7CUCdCSv5N7a"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IBinancePool.sol": {
+			"keccak256": "0x72e3d46c6cbb41ba7cf8f22d1ed8407b48675a97ed16390d7d4d8c5bc5066ac3",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://7f6a110b2c859df95236095fc0cfe065c14fd7365ba330983e9de17b8b60784a",
+				"dweb:/ipfs/QmeF64WBvvKPkstRBrfdzjTx6X6QddeKdMt5hWuCGsCUUz"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/ICertToken.sol": {
+			"keccak256": "0x6dd8f500742a2e519868ce4f3ca4c8a86fe810741f7d3dbfac6b75cdb3ad0d6d",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://d0fe93140e4c3e214e089f337f96d4faed0d055246b7b91385ec1729f0220caf",
+				"dweb:/ipfs/QmTcu8H7y2UZz9CFQ5i2qAiBjzmYB7AXQgjXE31uazoerX"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/MasterVault.sol": {
+			"keccak256": "0x81c964f364827ecd92c5a0dec8f3b6e377194809914aa4e69b03a88f3be122d6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://134dc9193b5552696f2a6809a0e50310472f5a09d32ec5c03fb778771d5f0913",
+				"dweb:/ipfs/Qmef9RMaGvHWWUodKjSkUXy7se6UAU4AzHzfcHPN5LRvhJ"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/interfaces/IMasterVault.sol": {
+			"keccak256": "0x26e17a2165d04d500f80dfc03d99fee289b682820d990c5636f7e1baa7fca71b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c995d3898ef5a7f88ed3fa8be6ff289ad4f2153b5f0c4c4a7810761ffefafff2",
+				"dweb:/ipfs/QmeH21z8siTZ6hkNS8AooWauES1aj3BP59Z29Ech4vfDNo"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/interfaces/IWaitingPool.sol": {
+			"keccak256": "0x831561ba56ed882a4352c9666dea1379222ca6f8f82122f57f20f5c4d9f18b9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://96bbfc0814205289e68a167ff702a3e0b960f20a0c36c93c9dd0420c83db5224",
+				"dweb:/ipfs/QmQPc26mEfKzvFettm1A2BKBoRPyadxBWG12P9comVWsy1"
+			]
+		},
+		"Heliocontracts/contracts/strategy/IBaseStrategy.sol": {
+			"keccak256": "0x4beca141dd08102dde5cd5d3920c22ab669b55bda6c5dd77d8788f6843ca02a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e3c362ec9faf95667595ba363c466207f2c51530128bc421141bfc5275989991",
+				"dweb:/ipfs/QmZYVDcXKgwwS8R4gyc2k4QupqdaC21EbwoMNYXx4Qzz7C"
+			]
+		}
+	},
+	"version": 1
+}

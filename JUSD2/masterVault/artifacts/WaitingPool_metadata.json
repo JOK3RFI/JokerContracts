@@ -1,0 +1,318 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawPending",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_person",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_debt",
+						"type": "uint256"
+					}
+				],
+				"name": "addToQueue",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "capLimit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPoolBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "index",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_masterVault",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_capLimit",
+						"type": "uint256"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "masterVault",
+				"outputs": [
+					{
+						"internalType": "contract IMasterVault",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "people",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "_address",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_debt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_settled",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_capLimit",
+						"type": "uint256"
+					}
+				],
+				"name": "setCapLimit",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalDebt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "tryRemove",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawUnsettled",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addToQueue(address,uint256)": {
+					"details": "Only masterVault can call to submit a new withdrawal request",
+					"params": {
+						"_debt": "amount that needs to be paid to _person NOTE: withdrawal and swap fees are already deducted in masterVault",
+						"_person": "address of the withdrawer"
+					}
+				},
+				"getPoolBalance()": {
+					"details": "returns the balance of this contract"
+				},
+				"initialize(address,uint256)": {
+					"details": "initialize function - Constructor for Upgradable contract, can be only called once during deployment",
+					"params": {
+						"_capLimit": "symbol of the vault token",
+						"_masterVault": "name of the vault token"
+					}
+				},
+				"setCapLimit(uint256)": {
+					"details": "only MasterVault can set new cap limit",
+					"params": {
+						"_capLimit": "new cap limit"
+					}
+				},
+				"tryRemove()": {
+					"details": "Only masterVault can trigger this function to pay outstanding debt of users       and set the settled flag on successful withdrawal."
+				},
+				"withdrawUnsettled(uint256)": {
+					"details": "users can withdraw their funds if they were not transferred in tryRemove()"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Heliocontracts/contracts/masterVault/WaitingPool.sol": "WaitingPool"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x0203dcadc5737d9ef2c211d6fa15d18ebc3b30dfa51903b64870b01a062b0b4e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6eb2fd1e9894dbe778f4b8131adecebe570689e63cf892f4e21257bfe1252497",
+				"dweb:/ipfs/QmXgUGNfZvrn6N2miv3nooSs7Jm34A41qz94fu2GtDFcx8"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x611aa3f23e59cfdd1863c536776407b3e33d695152a266fa7cfb34440a29a8a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9b4b2110b7f2b3eb32951bc08046fa90feccffa594e1176cb91cdfb0e94726b4",
+				"dweb:/ipfs/QmSxLwYjicf9zWFuieRc8WQwE4FisA1Um5jp1iSa731TGt"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/WaitingPool.sol": {
+			"keccak256": "0x0a1b5a86c09df39c46e9578506ea11beff06d9a9bbb1d47e661e1022708012e0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5e90d37f41312ac5ee81870c2dafe7d45a261ca179287841821ce0196b2a3065",
+				"dweb:/ipfs/QmXhF6uB121PZAvaQY9fTMkncRaiwkvAcX9f3xn4onrhTL"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/interfaces/IMasterVault.sol": {
+			"keccak256": "0x26e17a2165d04d500f80dfc03d99fee289b682820d990c5636f7e1baa7fca71b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c995d3898ef5a7f88ed3fa8be6ff289ad4f2153b5f0c4c4a7810761ffefafff2",
+				"dweb:/ipfs/QmeH21z8siTZ6hkNS8AooWauES1aj3BP59Z29Ech4vfDNo"
+			]
+		}
+	},
+	"version": 1
+}
