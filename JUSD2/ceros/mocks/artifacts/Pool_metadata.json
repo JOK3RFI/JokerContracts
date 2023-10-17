@@ -1,0 +1,207 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_certToken",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "certToken",
+				"outputs": [
+					{
+						"internalType": "contract ICertToken",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMinUnstake",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMinimumStake",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getRelayerFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "claimer",
+						"type": "address"
+					}
+				],
+				"name": "pendingUnstakesOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_minimumStake",
+						"type": "uint256"
+					}
+				],
+				"name": "setMinimumStake",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_relayerFee",
+						"type": "uint256"
+					}
+				],
+				"name": "setRelayerFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stakeAndClaimCerts",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "shares",
+						"type": "uint256"
+					}
+				],
+				"name": "unstakeCertsFor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Heliocontracts/contracts/ceros/mocks/Pool.sol": "Pool"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IBinancePool.sol": {
+			"keccak256": "0x72e3d46c6cbb41ba7cf8f22d1ed8407b48675a97ed16390d7d4d8c5bc5066ac3",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://7f6a110b2c859df95236095fc0cfe065c14fd7365ba330983e9de17b8b60784a",
+				"dweb:/ipfs/QmeF64WBvvKPkstRBrfdzjTx6X6QddeKdMt5hWuCGsCUUz"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/ICertToken.sol": {
+			"keccak256": "0x6dd8f500742a2e519868ce4f3ca4c8a86fe810741f7d3dbfac6b75cdb3ad0d6d",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://d0fe93140e4c3e214e089f337f96d4faed0d055246b7b91385ec1729f0220caf",
+				"dweb:/ipfs/QmTcu8H7y2UZz9CFQ5i2qAiBjzmYB7AXQgjXE31uazoerX"
+			]
+		},
+		"Heliocontracts/contracts/ceros/mocks/Pool.sol": {
+			"keccak256": "0x83d8b2e730cba81bb760362dac136a5a13439e37fbc13d4165fedc7fe6a509eb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://82f8acd374b04cbe79ae9e494af9b95801e8088c7da74a5f34f04ab9fc68aef3",
+				"dweb:/ipfs/Qmeze4VAFnpdXFXt7qSQgmELW7kD3WVxt1ckrDKsYkt3ba"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,942 @@
+{
+	"compiler": {
+		"version": "0.8.10+commit.fc410830"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "ChangeBNBStakingPool",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "ceToken",
+						"type": "address"
+					}
+				],
+				"name": "ChangeCeToken",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "collateralToken",
+						"type": "address"
+					}
+				],
+				"name": "ChangeCollateralToken",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "dao",
+						"type": "address"
+					}
+				],
+				"name": "ChangeDao",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "ChangeLiquidationStrategy",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "masterVault",
+						"type": "address"
+					}
+				],
+				"name": "ChangeMasterVault",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "auctionProxy",
+						"type": "address"
+					}
+				],
+				"name": "ChangeProxy",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Claim",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "version",
+						"type": "uint8"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Paused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "Unpaused",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "WithdrawalInToken",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_ceToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_certToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_collateralToken",
+				"outputs": [
+					{
+						"internalType": "contract ICertToken",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_dao",
+				"outputs": [
+					{
+						"internalType": "contract IDao",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_liquidationStrategy",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_masterVault",
+				"outputs": [
+					{
+						"internalType": "contract IMasterVault",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_operator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_pool",
+				"outputs": [
+					{
+						"internalType": "contract IBNBStakingPool",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_proxy",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "balanceOfToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "pool",
+						"type": "address"
+					}
+				],
+				"name": "changeBNBStakingPool",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "ceToken",
+						"type": "address"
+					}
+				],
+				"name": "changeCeToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "collateralToken",
+						"type": "address"
+					}
+				],
+				"name": "changeCollateralToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "dao",
+						"type": "address"
+					}
+				],
+				"name": "changeDao",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					}
+				],
+				"name": "changeLiquidationStrategy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "masterVault",
+						"type": "address"
+					}
+				],
+				"name": "changeMasterVault",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "auctionProxy",
+						"type": "address"
+					}
+				],
+				"name": "changeProxy",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "daoBurn",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "daoMint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateInToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "collateralToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "masterVault",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "ceToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "daoAddress",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "liquidation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "paused",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "provide",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "release",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "realAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "strategy",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "releaseInToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "realAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unPause",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"paused()": {
+					"details": "Returns true if the contract is paused, and false otherwise."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"Deposit(address,uint256)": {
+					"notice": "Events"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"_operator()": {
+					"notice": "Variables"
+				},
+				"changeDao(address)": {
+					"notice": "UPDATING FUNCTIONALITY"
+				},
+				"liquidation(address,uint256)": {
+					"notice": "DAO FUNCTIONALITY"
+				},
+				"pause()": {
+					"notice": "PAUSABLE FUNCTIONALITY"
+				},
+				"provide()": {
+					"notice": "DEPOSIT"
+				},
+				"release(address,uint256)": {
+					"notice": "RELEASE"
+				},
+				"releaseInToken(address,address,uint256)": {
+					"notice": "releaseInToken, recipient will get (aBNBc/stkBNB/snBNB/BNBx)"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Heliocontracts/contracts/ceros/upgrades/HelioProviderV2.sol": "HelioProviderV2"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0x247c62047745915c0af6b955470a72d1696ebad4352d7d3011aef1a2463cd888",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7fc8396619de513c96b6e00301b88dd790e83542aab918425633a5f7297a15a",
+				"dweb:/ipfs/QmXbP4kiZyp7guuS7xe8KaybnwkRPGrBc2Kbi3vhcTfpxb"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x0203dcadc5737d9ef2c211d6fa15d18ebc3b30dfa51903b64870b01a062b0b4e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6eb2fd1e9894dbe778f4b8131adecebe570689e63cf892f4e21257bfe1252497",
+				"dweb:/ipfs/QmXgUGNfZvrn6N2miv3nooSs7Jm34A41qz94fu2GtDFcx8"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol": {
+			"keccak256": "0x40c636b4572ff5f1dc50cf22097e93c0723ee14eff87e99ac2b02636eeca1250",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9c7d1f5e15633ab912b74c2f57e24559e66b03232300d4b27ff0f25bc452ecad",
+				"dweb:/ipfs/QmYTJkc1cntYkKQ1Tu11nBcJLakiy93Tjytc4XHELo4GmR"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x8cc03c5ac17e8a7396e487cda41fc1f1dfdb91db7d528e6da84bee3b6dd7e167",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://607818f1b44548c2d8268176f73cdb290e1faed971b1061930d92698366e2a11",
+				"dweb:/ipfs/QmQibMe3r5no95b6q7isGT5R75V8xSofWEDLXzp95b7LgZ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol": {
+			"keccak256": "0x4e733d3164f73f461eaf9d8087a7ad1ea180bdc8ba0d3d61b0e1ae16d8e63dff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75b47c3aeca7b66ea6752f8be020ec5c1c502de6ec9065272dae23d3a52196e2",
+				"dweb:/ipfs/QmUebPMHv16tYKFh5BmBQkMfRFb5b8UZ2RgVwdjxCeufVF"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/token/ERC20/extensions/draft-IERC20PermitUpgradeable.sol": {
+			"keccak256": "0xcc70d8e2281fb3ff69e8ab242500f10142cd0a7fa8dd9e45882be270d4d09024",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://17a4063bc918df0f7bb9cbf04c6f0bb4977afab3f2fc212bc138a178312a221d",
+				"dweb:/ipfs/QmZMdvsHP5mDEAAdrK4bNeNh47TfmSFgN9qEBFTbie7zmm"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol": {
+			"keccak256": "0xf42efac0d704b136c4d85e970562d4dbc1160d726ee93b5133122eb14fe368df",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e814c30d43cef5501933b775f33a6d6f06cde8aa3b7ce3773cf2256169bb6a1b",
+				"dweb:/ipfs/QmWMqHGc8MHDRgrPrtVyPqsYizr8dJsyFhnmwQV6aQwPKn"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x611aa3f23e59cfdd1863c536776407b3e33d695152a266fa7cfb34440a29a8a3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9b4b2110b7f2b3eb32951bc08046fa90feccffa594e1176cb91cdfb0e94726b4",
+				"dweb:/ipfs/QmSxLwYjicf9zWFuieRc8WQwE4FisA1Um5jp1iSa731TGt"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0x963ea7f0b48b032eef72fe3a7582edf78408d6f834115b9feadd673a4d5bd149",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d6520943ea55fdf5f0bafb39ed909f64de17051bc954ff3e88c9e5621412c79c",
+				"dweb:/ipfs/QmWZ4rAKTQbNG2HxGs46AcTXShsVytKeLs7CUCdCSv5N7a"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IBNBStakingPool.sol": {
+			"keccak256": "0x9b93c443e03ee761723989d1b986a315f916319f3d44d585697020987d07b881",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://b1a079633788c2754518560561d438690ba63e28d59a05989e43c56bb60f7e11",
+				"dweb:/ipfs/QmaW2dvvM1vTdfPpqib5FecKXuLkHNyLzRpXU2nRz6JCnj"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/ICerosRouter.sol": {
+			"keccak256": "0x2226dcc854500037f799b922fb3a88e6aac3624acce0819da7f2dc3008fe5d13",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://9924db5b74780a6107d24568b7d83cdd852229b7acf1b7a396cf90b9f27125b7",
+				"dweb:/ipfs/QmabwdvBEcBFftpAXjLW6igD3MVJKMP1QCo2JhGvbjfP7w"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/ICertToken.sol": {
+			"keccak256": "0x6dd8f500742a2e519868ce4f3ca4c8a86fe810741f7d3dbfac6b75cdb3ad0d6d",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://d0fe93140e4c3e214e089f337f96d4faed0d055246b7b91385ec1729f0220caf",
+				"dweb:/ipfs/QmTcu8H7y2UZz9CFQ5i2qAiBjzmYB7AXQgjXE31uazoerX"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IDao.sol": {
+			"keccak256": "0xc0a632260a55a225fdfe6a347dd7a934cfe91d8fc23c1f446cadf42cd0ff864c",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://c8c8a95375a65c70595794b408f73b60fe67f3b83f6ae5abd570ff9f58890ef6",
+				"dweb:/ipfs/QmeA9NeHgbwtYQUzMs4f4sv49FaUzAVGeR6qA3rcPdx9aE"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IDex.sol": {
+			"keccak256": "0xb568cbf5e825c1f7c2834316110a0decffdc152f61dd1b42c37296301bac8b38",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://d3c23e77ae7a8b3931f5372cff28513f7421f4cd38854a3950575dccd33f1f59",
+				"dweb:/ipfs/QmVQYgvrNAVT6tgRAsgmNh7kHm3MYXw5KjP7xMsvZBySKp"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IHelioProviderV2.sol": {
+			"keccak256": "0x9ad711091980b1a70bbaf2af89c925309d943d9c81221a9ad4caf336e7f57a4a",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://aeca2699ccaf4239a0144e31170fc4d9414606fc7e0f5bd991e9b7a3e9c715a0",
+				"dweb:/ipfs/QmPrTERuVkzoqETSnDzySgK7w6fy6a4sdaf5rbYkKqZE1S"
+			]
+		},
+		"Heliocontracts/contracts/ceros/interfaces/IVault.sol": {
+			"keccak256": "0xc92a2633aed2a5826d0385735d4e67352a538f4072077633cac72911f1ee3fea",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://621000ae03bd8acef499a0b2198fb3d67cf7bebc0c9917de9043ef4bd810bb46",
+				"dweb:/ipfs/QmTpMG1MhYQJ2Uf956dCXn6CKF3pHSSYH4RzZGjydmHqsw"
+			]
+		},
+		"Heliocontracts/contracts/ceros/upgrades/HelioProviderV2.sol": {
+			"keccak256": "0x38a84c189ee3ff50958e5117b97d451bd6f04f1d87df62c8a1363073bcf2f6b9",
+			"license": "GPL-3.0-only",
+			"urls": [
+				"bzz-raw://4325e0238b19c1e05eeac4429d9385f38585fa6b55f60774826889e2c223a6a4",
+				"dweb:/ipfs/Qme1rV8g8zkvk8TawAqWfNJtzqX7zMnEyQbREuKBJa6VT5"
+			]
+		},
+		"Heliocontracts/contracts/interfaces/GemJoinLike.sol": {
+			"keccak256": "0x354e755de4294b53611b016f8741fb45e308a2b0b3c43c2a608d48e78a13c78c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://eeb256851db772acce3cd98f0789db720fddefb1a727362e709dfb1b97f1bda5",
+				"dweb:/ipfs/QmX8NCgXtoDTcLmuzDPqCEKTESKLWZKPpcGjT9toJm1uD8"
+			]
+		},
+		"Heliocontracts/contracts/interfaces/GemLike.sol": {
+			"keccak256": "0x67ebc87e4c4ab740ca08f4bbec9351e0b71b9a044011f5d70fc9605405f070be",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2b671cf29ed8d73138653e5f1183490795803c7d896b1da47f8cb80dd3ff2979",
+				"dweb:/ipfs/QmR4bFeZ22k2HW4geysYfpZ5jn44jNqKie6sXGGBcRvLE8"
+			]
+		},
+		"Heliocontracts/contracts/masterVault/interfaces/IMasterVault.sol": {
+			"keccak256": "0x26e17a2165d04d500f80dfc03d99fee289b682820d990c5636f7e1baa7fca71b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c995d3898ef5a7f88ed3fa8be6ff289ad4f2153b5f0c4c4a7810761ffefafff2",
+				"dweb:/ipfs/QmeH21z8siTZ6hkNS8AooWauES1aj3BP59Z29Ech4vfDNo"
+			]
+		}
+	},
+	"version": 1
+}
