@@ -134,7 +134,7 @@ contract BondContract {
             
         }
         users[msg.sender].depositAmount = users[msg.sender].depositAmount + amount;
-        
+        blackToken.transferFrom(msg.sender, address(Treasury), amount);
         // Transfer DAI tokens from the user to this contract
         require(daiToken.transferFrom(msg.sender, address(Treasury), amount), "DAI transfer failed");
         
