@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+
 import '../../NewFraxProtocol/contracts/Frax/Pools/FraxPoolV3.sol';
 
 interface ITreasuryContract {
@@ -32,11 +33,10 @@ contract BondContract {
     address public owner;
     IERC20 public daiToken;
     IERC20 public dimeToken;
-   
-    FraxPoolV3 public  JUSD;
+    FraxPoolV3 public  JUSDPool;
+    IERC20 public blackToken;
     ITreasuryContract  public  Treasury;
-    AggregatorV3Interface public priceFeedDAIUSD; 
-  
+    AggregatorV3Interface public priceFeedDAIUSD; // Chainlink price feed for BLACK/USD
 
     uint256 public constant PRICE_PRECISION = 1e6; // Precision for price calculation
     uint8 public  chainlink_dai_usd_decimals ; // Number of decimals in Chainlink price feed
@@ -59,25 +59,26 @@ contract BondContract {
     uint256 public lastEpoch;
     uint256 public epochHours;
     uint256 public Max_threshold = 999999;
-    // JUSD = FRAXStablecoin(0xeeaeCf2Adb6Ae4fDf9c0988c6349cE36a8f21423);
     
 
     constructor(
         address _daiTokenAddress,
-        address _dimeTokenAddress,  
-        address _priceFeedDAIUSD,  
+        address _dimeTokenAddress,
+        address _priceFeedDAIUSD,
+        address _JUSDPool,        
         uint256 _timeDuration,
-        uint256 _epochHours
+        uint256 _epochHours,
+        address _blackToken
     ) {
         owner = msg.sender;
         daiToken = IERC20(_daiTokenAddress);
         dimeToken = IERC20(_dimeTokenAddress);
-        JUSD = FraxPoolV3(0x3835EBeAb162061cA13407963BCe0030CC2B641f);
         priceFeedDAIUSD = AggregatorV3Interface(_priceFeedDAIUSD);
+        JUSDPool = FraxPoolV3(_JUSDPool);
         chainlink_dai_usd_decimals = priceFeedDAIUSD.decimals();        
         timeDuration = _timeDuration;
         epochHours = _epochHours;
-
+        blackToken = IERC20(_blackToken);
     }
 
 
@@ -90,37 +91,34 @@ contract BondContract {
        Treasury = ITreasuryContract(_treasury);
     }
 
-    
-   // Function to get the price of the x DAI in 1USD
+    // Function to get the price of the BLACK token in USD
     function getDAIPrice() public view returns (uint256) {
         (uint80 roundID, int price, , uint256 updatedAt, uint80 answeredInRound) = priceFeedDAIUSD.latestRoundData();
         require(price >= 0 && updatedAt != 0 && answeredInRound >= roundID, "Invalid chainlink price");
 
-        return uint256(price).mul(PRICE_PRECISION).div(uint256(10) ** chainlink_dai_usd_decimals);
-    
+        return uint256(price).mul(PRICE_PRECISION).div(10**uint256(chainlink_dai_usd_decimals));
     }
 
     // Function to deposit DAI tokens and receive DIME tokens with a 20% discount
     function depositDAI(uint256 amount) external {
         require(lock == false,"Deposit is Locked");
         require(amount > 0, "Amount must be greater than zero");
-        // Calculate the price of X DAI in  1 USD
+        // Calculate the price of 1 DAI in USD
         uint256 daiToUSDPrice = getDAIPrice(); // Implement your DAI price function
 
         // Calculate the price of 1 ELEM in USD
-        uint256 blackToUSDPrice = JUSD.getBLACKPrice(); // Implement your DIME price function
+        uint256 dimeToUSDPrice = JUSDPool.getFXSPrice(); // Implement your DIME price function
 
         // Convert the amount from DAI to USD
-        uint256 amountInUSD = amount.mul(daiToUSDPrice).div(1e6);
+        uint256 amountInUSD = amount.mul(daiToUSDPrice).div(1e18);
 
-        // Convert the amount from USD to BLACK
-        uint256 amountInBLACK = amountInUSD.mul(1e6).div(blackToUSDPrice);
-        uint256 blackAmountd_9  = amountInBLACK.div(1e9);
+        // Convert the amount from USD to DIME
+        uint256 amountInDIME = amountInUSD.mul(1e18).div(dimeToUSDPrice);
 
-        // Calculate the discounted amount of BLACK with a 20% discount
-        uint256 discountedAmountInDIME = blackAmountd_9.mul(20).div(100);
+        // Calculate the discounted amount of DIME with a 20% discount
+        uint256 discountedAmountInDIME = amountInDIME.mul(20).div(100);
 
-        uint256 totalDIMEAllocated = blackAmountd_9 + discountedAmountInDIME;
+        uint256 totalDIMEAllocated = amountInDIME + discountedAmountInDIME;
 
        
        
@@ -136,7 +134,7 @@ contract BondContract {
             
         }
         users[msg.sender].depositAmount = users[msg.sender].depositAmount + amount;
-        
+        blackToken.transferFrom(msg.sender, address(Treasury), amount);
         // Transfer DAI tokens from the user to this contract
         require(daiToken.transferFrom(msg.sender, address(Treasury), amount), "DAI transfer failed");
         
@@ -172,12 +170,12 @@ contract BondContract {
                 users[msg.sender].userRewards = (users[msg.sender].userRewards).sub(claimAmount);
                 users[msg.sender].claimeblePeriod = (users[msg.sender].claimeblePeriod).sub(timeCount);
                 users[msg.sender].claimedTime = block.timestamp;
-                users[msg.sender].claimedAmount = users[msg.sender].claimedAmount + claimAmount ;
+                users[msg.sender].claimedAmount = users[msg.sender].claimedAmount + claimAmount.div(1e9) ;
             }
             
         
             
-            Treasury.BlackTransfer(claimAmount, msg.sender);
+            Treasury.BlackTransfer(claimAmount.div(1e9), msg.sender);
         }
     }
 
@@ -188,35 +186,27 @@ contract BondContract {
 
     function rebase() public {
         require((lastEpoch+epochHours) <= block.timestamp,"Epoch is not reached");
-        uint256 blackPrice = JUSD.getBLACKPrice();
-        uint256 blackPriceEquilibrium = blackPrice*10000;
-        uint256 dimePrice = JUSD.getFXSPrice();
+        uint256 blackPrice = JUSDPool.getBLACKPrice();
+        uint256 dimekPrice = JUSDPool.getFXSPrice();
         uint256 dimeSupply = dimeToken.totalSupply();
-
-        
-        if(blackPriceEquilibrium > dimePrice){
-            uint256 diff_in_price = blackPriceEquilibrium - dimePrice;
-            // uint256 diff = Max_threshold - blackPrice;
+        // uint256 Max_threshold = 999999;
+        if(blackPrice < Max_threshold){
+            uint256 diff = Max_threshold - blackPrice;
             //New Supply(mint) = (Old Price * Old Supply) / New Price
-            uint256 amountToMint;
-            if(dimePrice > diff_in_price){
-                amountToMint = (dimePrice.mul(dimeSupply)).div((dimePrice.sub(diff_in_price)));
-            }else{
-                amountToMint = (dimePrice.mul(dimeSupply)).div((diff_in_price.sub(dimePrice)));
-            }
-           
+            uint256 amountToMint = (dimekPrice.mul(dimeSupply)).div((dimekPrice.sub(diff)));
             Treasury.mintDime(amountToMint);
         }
-        else if(blackPriceEquilibrium < dimePrice){
-            uint256 diff_in_price = dimePrice - blackPriceEquilibrium;
+        else if(blackPrice > Max_threshold){
+            uint256 diff = blackPrice - Max_threshold;
             //Tokens to Burn= Current Supply×(Current Price−Target Price)/Target Price
-            uint256 amountToBurn = (((dimePrice.add(diff_in_price)).sub(dimePrice)).mul(dimeSupply)).div(dimePrice.add(diff_in_price));
+            uint256 amountToBurn = (((dimekPrice.add(diff)).sub(dimekPrice)).mul(dimeSupply)).div(dimekPrice.add(diff));
             Treasury.burnDime(amountToBurn);
         }
         else{
             //nothing to do
         }
-         
+
+
         lastEpoch = block.timestamp;
 
     }
