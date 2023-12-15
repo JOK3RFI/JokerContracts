@@ -315,9 +315,9 @@ contract Bond is ERC20, Ownable {
     IERC20 public UsdtToken;
     ITreasuryContract  public  Treasury;
 
-    PriceConsumerV3 public dimeOracle;
-    PriceConsumerV3 public jokerOracle;
-    PriceConsumerV3 public usdtOracle;
+    DataConsumerV3 public dimeOracle;
+    DataConsumerV3 public jokerOracle;
+    DataConsumerV3 public usdtOracle;
 
     uint256 pricePrecision = 10 ** 9;
     address public revenueWallet;
@@ -345,7 +345,7 @@ contract Bond is ERC20, Ownable {
 
 
     // Constructor
-    constructor(address initialOwner,PriceConsumerV3 _dimeOracle,PriceConsumerV3 _jokerOracle,PriceConsumerV3 _usdtOracle, address _revenueWallet,IERC20 _usdt,IERC20 _jokerToken) ERC20("DIME", "DIME") Ownable(initialOwner) {
+    constructor(address initialOwner,DataConsumerV3 _dimeOracle,DataConsumerV3 _jokerOracle,DataConsumerV3 _usdtOracle, address _revenueWallet,IERC20 _usdt,IERC20 _jokerToken) ERC20("DIME", "DIME") Ownable(initialOwner) {
         dimeOracle = _dimeOracle;
         jokerOracle = _jokerOracle;
         usdtOracle = _usdtOracle;
@@ -358,10 +358,10 @@ contract Bond is ERC20, Ownable {
     }
 
     function getAllPrice() public  view returns (uint256,uint256,uint256) {
-        int dimePrice = dimeOracle.getLatestPrice();
-        // int jokerPrice = jokerOracle.getLatestPrice();//for now testing its to be commented
+        int dimePrice = dimeOracle.getChainlinkDataFeedLatestAnswer();
+        // int jokerPrice = jokerOracle.getChainlinkDataFeedLatestAnswer();//for now testing its to be commented
         int jokerPrice = 10 * (10 ** 8);
-        int usdtPrice = usdtOracle.getLatestPrice();
+        int usdtPrice = usdtOracle.getChainlinkDataFeedLatestAnswer();
 
         // Check if the price is non-negative before casting
         require(dimePrice >= 0, "Negative price not supported");
@@ -400,12 +400,24 @@ contract Bond is ERC20, Ownable {
        Treasury = ITreasuryContract(_treasury);
     }
 
+    
+    function setJOKERAddress(ERC20 _jokerToken) external  onlyOwner {
+      
+        
+        JokerToken = _jokerToken;
+    }
+
+    function setUSDTddress(ERC20 _usdt) external  onlyOwner {
+      
+        UsdtToken = _usdt;
+    }
+
     function setRevenueAddress(address _revenueWallet) external  onlyOwner {
       
       revenueWallet = _revenueWallet;
     }
 
-    function setOracleAddress(PriceConsumerV3 _dimeOracle,PriceConsumerV3 _jokerOracle,PriceConsumerV3 _usdtOracle) external  onlyOwner {
+    function setOracleAddress(DataConsumerV3 _dimeOracle,DataConsumerV3 _jokerOracle,DataConsumerV3 _usdtOracle) external  onlyOwner {
        dimeOracle = _dimeOracle;
         jokerOracle = _jokerOracle;
         usdtOracle = _usdtOracle;
@@ -425,8 +437,9 @@ contract Bond is ERC20, Ownable {
         // Calculate total USD value
         uint256 totalValueInUSD = usdtValue + jokerValue;
 
-        require(usdtValue >= (totalValueInUSD*89).div(100),"USDT needs to be 90%");
-        require(jokerValue >= (totalValueInUSD*9).div(100),"JOKER needs to be 10%");
+        // Jokervalue = ((1-cPercentage)*(daiAmount*daiPrice)) / (cPercentage*blackPrice)
+        
+        require(jokerValue >= ((10000000000 - 900000000)*(usdtAmount*usdtPrice))/(900000000*jokerPrice),"JOKER needs to be 10%");
         
         // Calculate the amount of DIME tokens to mint
         uint256 dimeToMint = totalValueInUSD / dimePrice;
@@ -434,14 +447,21 @@ contract Bond is ERC20, Ownable {
         //calculate the treasury Value
         uint256 treasuryValue = (Treasury.getDimeBalance() * dimePrice).add(Treasury.getUsdtBalance() * usdtPrice); //need to add the function in treasury contract
 
-        //treasuryValueOfDime= treasuryTotalAsset/totalSupplyOfDime
+        //treasuryValueOfDime= treasuryTotalAsset×PRECISION/totalSupplyOfDime
         uint256 treasuryTotalValue = (treasuryValue ).div(totalSupply());
 
         //discountRate=((marketPrice×PRECISION−treasuryValueOfDime)*100)/marketPrice×PRECISION
-        uint256 discountRate = ((difference((dimePrice),treasuryTotalValue)).mul(100)).div(dimePrice);
+        // uint256 discountRate = ((difference((dimePrice),treasuryTotalValue)).mul(100)).div(dimePrice);
+        uint256 discountRate;
+        if(dimePrice > treasuryTotalValue){
+            discountRate = ((dimePrice - treasuryTotalValue).mul(100)).div(dimePrice);
+        }else{
+            discountRate = ((treasuryTotalValue - dimePrice).mul(100)).div(dimePrice);
+        }
+        
 
         //Bond value = Bondvalue * discountRate/10000
-        uint256 totalDIMEAllocated = (dimeToMint.mul(discountRate)).div(10000);       
+        uint256 totalDIMEAllocated = dimeToMint + (dimeToMint.mul(discountRate)).div(10000);       
        
 
         if(users[msg.sender].userRewards > 0){
@@ -454,12 +474,12 @@ contract Bond is ERC20, Ownable {
             users[msg.sender].claimeblePeriod = 5;
             
         }
-        users[msg.sender].depositAmount = users[msg.sender].depositAmount + (totalValueInUSD.div(pricePrecision));
+        users[msg.sender].depositAmount = users[msg.sender].depositAmount + (totalValueInUSD.div(10 ** 8));
         uint256 revenueJoker = (jokerAmount*3)/100;
         uint256 remainJoker = jokerAmount - revenueJoker;
         JokerToken.transferFrom(msg.sender, address(revenueWallet), revenueJoker);
         //Burning the remaining token
-        JokerToken.transferFrom(msg.sender, address(0x0000000000000000000000000000000000000000), remainJoker);
+        JokerToken.transferFrom(msg.sender, address(0x0000000000000000000000000000000000000001), remainJoker);
         uint256 usdtamount = usdtAmount;
         // Transfer USDT tokens from the user to this contract
         require(UsdtToken.transferFrom(msg.sender, address(Treasury), usdtamount), "USDT transfer failed");
@@ -545,5 +565,7 @@ contract Bond is ERC20, Ownable {
     function setClaimDuration(uint256 _timeDuration) public {
         timeDuration = _timeDuration;
     }
+
+    
 
 }
