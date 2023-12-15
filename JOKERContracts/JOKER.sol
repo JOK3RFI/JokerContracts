@@ -883,8 +883,8 @@ contract BlackCollateral is Context, IBEP20, Ownable,Initializable {
      * and 1% is added in reserved wallet address.
      * and 1% is added in liquidity pool. 
     */
-    function initialize() public override  initializer
-    // constructor()public 
+    // function initialize() public override  initializer
+    constructor()public 
     {
      Ownable.initialize();
     _blackConfig.cTaxFee=4;
@@ -899,12 +899,12 @@ contract BlackCollateral is Context, IBEP20, Ownable,Initializable {
     _rTotal = (MAX - (MAX % _tTotal));
     _rOwned[_msgSender()] = _rTotal;
      treasuryaddress =  address(0xd72558AB56489747360657ab4802176Ce18B49E5);  
-     IUniswapV3Router01 _uniswapV3Router = IUniswapV3Router01(0x8357227D4eDc78991Db6FDB9bD6ADE250536dE1d);
+     IUniswapV3Router01 _uniswapV3Router = IUniswapV3Router01(0x1238536071E1c677A632429e3655c799b22cDA52);
     //Create a uniswap pair for this new token
      uniswapV3Pair = IUniswapV3Factory(_uniswapV3Router.factory()).createPool(address(this), _uniswapV3Router.WETH9(),500);
     // set the rest of the contract variables
      uniswapV3Router = _uniswapV3Router;
-     inSwapAndLiquify = true; //Added  after bug Fix
+    //  inSwapAndLiquify = true; //Added  after bug Fix
      emit Transfer(address(0), _msgSender(), _tTotal);
     }
 	/**
